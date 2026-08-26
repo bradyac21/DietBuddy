@@ -25,6 +25,11 @@ enum ReminderScheduler {
 
     private static var identifiers: [String] { reminders.map(\.id) }
 
+    /// The current notification authorization status.
+    static func authorizationStatus() async -> UNAuthorizationStatus {
+        await UNUserNotificationCenter.current().notificationSettings().authorizationStatus
+    }
+
     /// Requests notification authorization. Returns whether it was granted.
     @discardableResult
     static func requestAuthorization() async -> Bool {

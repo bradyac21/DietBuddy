@@ -1,8 +1,11 @@
 import SwiftUI
+import UIKit
 
 /// Account & settings tab. The account is stored locally for now.
 struct AccountSettingsView: View {
     @Environment(\.appAccentColor) private var accent
+    @Environment(\.openURL) private var openURL
+    @State private var notificationsDenied = false
     @AppStorage("displayName") private var displayName: String = ""
     @AppStorage("appearance") private var appearance: String = AppAppearance.system.rawValue
     @AppStorage("accentColorName") private var accentColorName: String = AppAccent.blue.rawValue
@@ -76,13 +79,28 @@ struct AccountSettingsView: View {
 
             Section {
                 Toggle("Check-in reminders", isOn: $remindersEnabled)
+                if remindersEnabled && notificationsDenied {
+                    Button("Open Settings") {
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            openURL(url)
+                        }
+                    }
+                }
             } header: {
                 Text("Reminders")
             } footer: {
-                Text("If you haven't opened DietBuddy in a few days, we'll send a gentle reminder to log your weight or a meal.")
+                if remindersEnabled && notificationsDenied {
+                    Text("Notifications are turned off for DietBuddy. Turn them on in Settings to receive check-in reminders.")
+                        .foregroundStyle(.red)
+                } else {
+                    Text("If you haven't opened DietBuddy in a few days, we'll send a gentle reminder to log your weight or a meal.")
+                }
             }
             .onChange(of: remindersEnabled) { _, enabled in
-                Task { await ReminderScheduler.setEnabled(enabled) }
+                Task {
+                    await ReminderScheduler.setEnabled(enabled)
+                    await refreshNotificationStatus()
+                }
             }
 
             Section("Support") {
@@ -102,6 +120,11 @@ struct AccountSettingsView: View {
             }
         }
         .navigationTitle("Account")
+        .task { await refreshNotificationStatus() }
+    }
+
+    private func refreshNotificationStatus() async {
+        notificationsDenied = await ReminderScheduler.authorizationStatus() == .denied
     }
 
     /// A settings row whose value and chevron use the accent color and update live with it.
