@@ -45,10 +45,10 @@ struct MealHistoryView: View {
 
                         let dayTotal = day.meals.reduce(0) { $0 + $1.totalCalories }
                         HStack {
-                            Text("Day Total").fontWeight(.semibold)
+                            Text("Day Total").bold()
                             Spacer()
                             Text("\(dayTotal, format: .number.precision(.fractionLength(0))) kcal")
-                                .fontWeight(.semibold)
+                                .bold()
                         }
                     }
                 }

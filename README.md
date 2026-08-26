@@ -13,7 +13,8 @@ coding assistant rather than by writing the code by hand. The goals of the proje
 - Explore modern SwiftUI, SwiftData, and Swift concurrency along the way.
 
 Every feature, refactor, and bug fix in this repository was produced through that
-human-in-the-loop, AI-assisted process.
+human-in-the-loop, AI-assisted process. In this project, I didn't write anything —
+not a single line of code, not even this README.
 
 ## Features
 

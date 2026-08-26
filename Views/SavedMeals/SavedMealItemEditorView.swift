@@ -15,13 +15,13 @@ struct SavedMealItemEditorView: View {
 
     init(item: SavedMealItem) {
         self.item = item
-        _nameText = State(initialValue: item.foodName)
-        _brandText = State(initialValue: item.brand ?? "")
-        _caloriesText = State(initialValue: Self.numberString(item.caloriesPer100g))
-        _proteinText = State(initialValue: Self.numberString(item.proteinPer100g))
-        _carbsText = State(initialValue: Self.numberString(item.carbsPer100g))
-        _fatText = State(initialValue: Self.numberString(item.fatPer100g))
-        _gramsText = State(initialValue: Self.numberString(item.grams))
+        nameText = item.foodName
+        brandText = item.brand ?? ""
+        caloriesText = Self.numberString(item.caloriesPer100g)
+        proteinText = Self.numberString(item.proteinPer100g)
+        carbsText = Self.numberString(item.carbsPer100g)
+        fatText = Self.numberString(item.fatPer100g)
+        gramsText = Self.numberString(item.grams)
     }
 
     private var canSave: Bool {

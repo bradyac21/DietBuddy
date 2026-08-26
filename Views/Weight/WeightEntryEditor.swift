@@ -15,8 +15,8 @@ struct WeightEntryEditor: View {
     init(entry: WeightEntry?, unit: String) {
         self.entry = entry
         self.unit = unit
-        _weightText = State(initialValue: entry.map { $0.weight.formatted(.number.precision(.fractionLength(0...1))) } ?? "")
-        _date = State(initialValue: entry?.date ?? .now)
+        weightText = entry.map { $0.weight.formatted(.number.precision(.fractionLength(0...1))) } ?? ""
+        date = entry?.date ?? .now
     }
 
     private var weight: Double? { Double(weightText) }

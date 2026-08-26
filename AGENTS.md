@@ -43,6 +43,7 @@ You are a **Senior iOS Engineer**, specializing in SwiftUI, SwiftData, and relat
 - Never use `Task.sleep(nanoseconds:)`; always use `Task.sleep(for:)` instead.
 - Never use `UIScreen.main.bounds` to read the size of the available space.
 - Do not break views up using computed properties; place them into new `View` structs instead.
+- When initializing `@State` from `init` parameters, declare the property without a default value and assign it directly in the initializer (e.g. `name = value`) *after* all non-state stored properties are set. Do not use `_name = State(initialValue:)`, and do not also give the property a default at its declaration. (`@State` is a macro as of SDK 27, so direct assignment is the correct form.)
 - Do not force specific font sizes; prefer using Dynamic Type instead.
 - Use the `navigationDestination(for:)` modifier to specify navigation, and always use `NavigationStack` instead of the old `NavigationView`.
 - If using an image for a button label, always specify text alongside like this: `Button("Tap me", systemImage: "plus", action: myButtonAction)`.

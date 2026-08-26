@@ -85,11 +85,14 @@ struct GoalListView: View {
 
     private func deleteGoals(at offsets: IndexSet) {
         let deletingActive = offsets.contains { goals[$0].isActive }
+        let deletedIDs = Set(offsets.map { goals[$0].id })
         for index in offsets {
             context.delete(goals[index])
         }
+        // If the active goal was removed, promote the most recent remaining goal.
         if deletingActive {
-            DispatchQueue.main.async { ensureActiveExists() }
+            let survivors = goals.filter { !deletedIDs.contains($0.id) }
+            survivors.sorted { $0.createdAt > $1.createdAt }.first?.isActive = true
         }
     }
 }

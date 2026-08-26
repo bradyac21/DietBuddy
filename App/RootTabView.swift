@@ -15,22 +15,20 @@ struct RootTabView: View {
     }
 
     /// Tabs, in display order. The app opens to Food.
-    private enum Tab: Hashable { case weight, food, account }
-    @State private var selection: Tab = .food
+    private enum AppTab: Hashable { case weight, food, account }
+    @State private var selection: AppTab = .food
 
     var body: some View {
         TabView(selection: $selection) {
-            NavigationStack { WeightView() }
-                .tabItem { Label("Weight", systemImage: "chart.line.uptrend.xyaxis") }
-                .tag(Tab.weight)
-
-            NavigationStack { MealMainView() }
-                .tabItem { Label("Food", systemImage: "fork.knife") }
-                .tag(Tab.food)
-
-            NavigationStack { AccountSettingsView() }
-                .tabItem { Label("Account", systemImage: "person.crop.circle") }
-                .tag(Tab.account)
+            Tab("Weight", systemImage: "chart.line.uptrend.xyaxis", value: AppTab.weight) {
+                NavigationStack { WeightView() }
+            }
+            Tab("Food", systemImage: "fork.knife", value: AppTab.food) {
+                NavigationStack { MealMainView() }
+            }
+            Tab("Account", systemImage: "person.crop.circle", value: AppTab.account) {
+                NavigationStack { AccountSettingsView() }
+            }
         }
         .tint(accentColor)
         .preferredColorScheme(preferredScheme)

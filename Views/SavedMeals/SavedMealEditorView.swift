@@ -11,7 +11,7 @@ struct SavedMealEditorView: View {
 
     init(savedMeal: SavedMeal) {
         self.savedMeal = savedMeal
-        _name = State(initialValue: savedMeal.name)
+        name = savedMeal.name
     }
 
     private var trimmed: String { name.trimmingCharacters(in: .whitespaces) }

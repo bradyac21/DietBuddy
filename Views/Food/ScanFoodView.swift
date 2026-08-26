@@ -40,24 +40,9 @@ struct ScanFoodView: View {
                 .navigationTitle("Scan Barcode")
                 .navigationBarTitleDisplayMode(.inline)
             } else {
-                manualBarcodeEntry
+                ManualBarcodeEntryView(barcode: $manualBarcode, onLookUp: lookUp)
             }
         }
-    }
-
-    private var manualBarcodeEntry: some View {
-        Form {
-            Section {
-                TextField("Barcode number", text: $manualBarcode)
-                    .keyboardType(.numberPad)
-                Button("Look Up") { lookUp(manualBarcode) }
-                    .disabled(manualBarcode.trimmingCharacters(in: .whitespaces).isEmpty)
-            } footer: {
-                Text("Camera scanning isn't available on this device. Type the barcode digits to look it up, or add the food manually.")
-            }
-        }
-        .navigationTitle("Enter Barcode")
-        .navigationBarTitleDisplayMode(.inline)
     }
 
     private func lookUp(_ code: String) {
