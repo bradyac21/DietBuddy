@@ -53,6 +53,7 @@
 		D403F066303E95D100140095 /* DietBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F065303E95D100140095 /* DietBuddyApp.swift */; };
 		D403F068303E95D700140095 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F067303E95D700140095 /* RootTabView.swift */; };
 		D4DB75F4303F1AD90050C594 /* ManualBarcodeEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB75F3303F1AD90050C594 /* ManualBarcodeEntryView.swift */; };
+		D4DB75F6303F615F0050C594 /* ReminderScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB75F5303F615F0050C594 /* ReminderScheduler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +104,7 @@
 		D403F065303E95D100140095 /* DietBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietBuddyApp.swift; sourceTree = "<group>"; };
 		D403F067303E95D700140095 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		D4DB75F3303F1AD90050C594 /* ManualBarcodeEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualBarcodeEntryView.swift; sourceTree = "<group>"; };
+		D4DB75F5303F615F0050C594 /* ReminderScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderScheduler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				D403F001303C8C5E00140095 /* FoodLookupService.swift */,
+				D4DB75F5303F615F0050C594 /* ReminderScheduler.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				D403F004303C8C6900140095 /* BarcodeScannerView.swift in Sources */,
 				D403F054303E94B400140095 /* SavedMealEditorView.swift in Sources */,
 				D403F05A303E94DE00140095 /* AccentColorPicker.swift in Sources */,
+				D4DB75F6303F615F0050C594 /* ReminderScheduler.swift in Sources */,
 				D403F022303E931100140095 /* PortionUnit.swift in Sources */,
 				D403F04E303E94A000140095 /* SavedMealItemRow.swift in Sources */,
 				D403F066303E95D100140095 /* DietBuddyApp.swift in Sources */,

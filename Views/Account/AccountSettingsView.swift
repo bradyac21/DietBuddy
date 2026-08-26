@@ -7,6 +7,7 @@ struct AccountSettingsView: View {
     @AppStorage("appearance") private var appearance: String = AppAppearance.system.rawValue
     @AppStorage("accentColorName") private var accentColorName: String = AppAccent.blue.rawValue
     @AppStorage("weightUnit") private var weightUnit: String = "lb"
+    @AppStorage("remindersEnabled") private var remindersEnabled = false
 
     private var feedbackURL: URL? {
         var components = URLComponents()
@@ -71,6 +72,17 @@ struct AccountSettingsView: View {
                 } label: {
                     settingRow("Weight Unit", value: weightUnit == "kg" ? "Kilograms (kg)" : "Pounds (lb)")
                 }
+            }
+
+            Section {
+                Toggle("Check-in reminders", isOn: $remindersEnabled)
+            } header: {
+                Text("Reminders")
+            } footer: {
+                Text("If you haven't opened DietBuddy in a few days, we'll send a gentle reminder to log your weight or a meal.")
+            }
+            .onChange(of: remindersEnabled) { _, enabled in
+                Task { await ReminderScheduler.setEnabled(enabled) }
             }
 
             Section("Support") {

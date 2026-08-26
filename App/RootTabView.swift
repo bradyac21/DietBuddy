@@ -3,8 +3,10 @@ import SwiftData
 
 /// Three-tab root: Weight tracking, Food tracking, and Account/Settings.
 struct RootTabView: View {
+    @Environment(\.scenePhase) private var scenePhase
     @AppStorage("appearance") private var appearance: String = AppAppearance.system.rawValue
     @AppStorage("accentColorName") private var accentColorName: String = AppAccent.blue.rawValue
+    @AppStorage("remindersEnabled") private var remindersEnabled = false
 
     private var preferredScheme: ColorScheme? {
         AppAppearance(rawValue: appearance)?.colorScheme
@@ -35,6 +37,11 @@ struct RootTabView: View {
         .environment(\.appAccentColor, accentColor)
         .onAppear { applyNavigationBarAccent(accentColor) }
         .onChange(of: accentColorName) { _, _ in applyNavigationBarAccent(accentColor) }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active {
+                Task { await ReminderScheduler.appBecameActive(remindersEnabled: remindersEnabled) }
+            }
+        }
     }
 }
 
