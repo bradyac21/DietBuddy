@@ -6,8 +6,101 @@
 	objectVersion = 90;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D403EFEA303C856E00140095 /* WeightEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403EFE9303C856E00140095 /* WeightEntry.swift */; };
+		D403EFEC303C877700140095 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403EFEB303C877700140095 /* Food.swift */; };
+		D403EFEE303C877A00140095 /* MealItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403EFED303C877A00140095 /* MealItem.swift */; };
+		D403EFF2303C877F00140095 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403EFF1303C877F00140095 /* Goal.swift */; };
+		D403F002303C8C5E00140095 /* FoodLookupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F001303C8C5E00140095 /* FoodLookupService.swift */; };
+		D403F004303C8C6900140095 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F003303C8C6900140095 /* BarcodeScannerView.swift */; };
+		D403F00A303CD44300140095 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F009303CD44300140095 /* Meal.swift */; };
+		D403F00C303CD44F00140095 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F00B303CD44F00140095 /* AddMealView.swift */; };
+		D403F012303CDB6300140095 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F011303CDB6300140095 /* SampleData.swift */; };
+		D403F01E303E92F200140095 /* SavedMeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F01D303E92F200140095 /* SavedMeal.swift */; };
+		D403F020303E92FA00140095 /* SavedMealItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F01F303E92FA00140095 /* SavedMealItem.swift */; };
+		D403F022303E931100140095 /* PortionUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F021303E931100140095 /* PortionUnit.swift */; };
+		D403F024303E931A00140095 /* AddMealItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F023303E931A00140095 /* AddMealItemView.swift */; };
+		D403F026303E932300140095 /* ScanFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F025303E932300140095 /* ScanFoodView.swift */; };
+		D403F028303E934100140095 /* FoodEntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F027303E934100140095 /* FoodEntryForm.swift */; };
+		D403F02A303E93AE00140095 /* MealMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F029303E93AE00140095 /* MealMainView.swift */; };
+		D403F02C303E93C000140095 /* MealDisclosureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F02B303E93C000140095 /* MealDisclosureView.swift */; };
+		D403F02E303E93C400140095 /* MealEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F02D303E93C400140095 /* MealEntry.swift */; };
+		D403F030303E93D400140095 /* MacroSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F02F303E93D400140095 /* MacroSummaryView.swift */; };
+		D403F032303E93D600140095 /* MealItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F031303E93D600140095 /* MealItemRow.swift */; };
+		D403F034303E93E700140095 /* MealItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F033303E93E700140095 /* MealItemDetailView.swift */; };
+		D403F036303E93F000140095 /* MealBundleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F035303E93F000140095 /* MealBundleDetailView.swift */; };
+		D403F038303E93FB00140095 /* MealHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F037303E93FB00140095 /* MealHistoryView.swift */; };
+		D403F03A303E940100140095 /* SaveMealSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F039303E940100140095 /* SaveMealSheet.swift */; };
+		D403F03C303E944E00140095 /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F03B303E944E00140095 /* WeightView.swift */; };
+		D403F03E303E945200140095 /* WeightChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F03D303E945200140095 /* WeightChartView.swift */; };
+		D403F040303E945500140095 /* WeightChangeSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F03F303E945500140095 /* WeightChangeSummaryView.swift */; };
+		D403F042303E945B00140095 /* WeightRowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F041303E945B00140095 /* WeightRowLabel.swift */; };
+		D403F044303E946000140095 /* WeightHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F043303E946000140095 /* WeightHistoryView.swift */; };
+		D403F046303E946700140095 /* WeightEntryEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F045303E946700140095 /* WeightEntryEditor.swift */; };
+		D403F048303E948200140095 /* GoalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F047303E948200140095 /* GoalListView.swift */; };
+		D403F04A303E948D00140095 /* GoalEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F049303E948D00140095 /* GoalEditor.swift */; };
+		D403F04C303E949D00140095 /* SavedMealsPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F04B303E949D00140095 /* SavedMealsPickerView.swift */; };
+		D403F04E303E94A000140095 /* SavedMealItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F04D303E94A000140095 /* SavedMealItemRow.swift */; };
+		D403F050303E94A300140095 /* SavedMealDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F04F303E94A300140095 /* SavedMealDetailView.swift */; };
+		D403F052303E94AB00140095 /* SavedMealsManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F051303E94AB00140095 /* SavedMealsManagerView.swift */; };
+		D403F054303E94B400140095 /* SavedMealEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F053303E94B400140095 /* SavedMealEditorView.swift */; };
+		D403F056303E94BF00140095 /* SavedMealItemEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F055303E94BF00140095 /* SavedMealItemEditorView.swift */; };
+		D403F058303E94D900140095 /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F057303E94D900140095 /* AccountSettingsView.swift */; };
+		D403F05A303E94DE00140095 /* AccentColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F059303E94DE00140095 /* AccentColorPicker.swift */; };
+		D403F05C303E94EF00140095 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F05B303E94EF00140095 /* Theme.swift */; };
+		D403F05E303E94F600140095 /* NavigationBarAccent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F05D303E94F600140095 /* NavigationBarAccent.swift */; };
+		D403F060303E94F800140095 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F05F303E94F800140095 /* EmptyStateView.swift */; };
+		D403F066303E95D100140095 /* DietBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F065303E95D100140095 /* DietBuddyApp.swift */; };
+		D403F068303E95D700140095 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F067303E95D700140095 /* RootTabView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		000000000000000000000120 /* DietBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DietBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D403EFE9303C856E00140095 /* WeightEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEntry.swift; sourceTree = "<group>"; };
+		D403EFEB303C877700140095 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		D403EFED303C877A00140095 /* MealItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealItem.swift; sourceTree = "<group>"; };
+		D403EFF1303C877F00140095 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		D403F001303C8C5E00140095 /* FoodLookupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLookupService.swift; sourceTree = "<group>"; };
+		D403F003303C8C6900140095 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
+		D403F009303CD44300140095 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		D403F00B303CD44F00140095 /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
+		D403F011303CDB6300140095 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		D403F01D303E92F200140095 /* SavedMeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMeal.swift; sourceTree = "<group>"; };
+		D403F01F303E92FA00140095 /* SavedMealItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMealItem.swift; sourceTree = "<group>"; };
+		D403F021303E931100140095 /* PortionUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortionUnit.swift; sourceTree = "<group>"; };
+		D403F023303E931A00140095 /* AddMealItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealItemView.swift; sourceTree = "<group>"; };
+		D403F025303E932300140095 /* ScanFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanFoodView.swift; sourceTree = "<group>"; };
+		D403F027303E934100140095 /* FoodEntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEntryForm.swift; sourceTree = "<group>"; };
+		D403F029303E93AE00140095 /* MealMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealMainView.swift; sourceTree = "<group>"; };
+		D403F02B303E93C000140095 /* MealDisclosureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDisclosureView.swift; sourceTree = "<group>"; };
+		D403F02D303E93C400140095 /* MealEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealEntry.swift; sourceTree = "<group>"; };
+		D403F02F303E93D400140095 /* MacroSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroSummaryView.swift; sourceTree = "<group>"; };
+		D403F031303E93D600140095 /* MealItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealItemRow.swift; sourceTree = "<group>"; };
+		D403F033303E93E700140095 /* MealItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealItemDetailView.swift; sourceTree = "<group>"; };
+		D403F035303E93F000140095 /* MealBundleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealBundleDetailView.swift; sourceTree = "<group>"; };
+		D403F037303E93FB00140095 /* MealHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealHistoryView.swift; sourceTree = "<group>"; };
+		D403F039303E940100140095 /* SaveMealSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMealSheet.swift; sourceTree = "<group>"; };
+		D403F03B303E944E00140095 /* WeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
+		D403F03D303E945200140095 /* WeightChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightChartView.swift; sourceTree = "<group>"; };
+		D403F03F303E945500140095 /* WeightChangeSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightChangeSummaryView.swift; sourceTree = "<group>"; };
+		D403F041303E945B00140095 /* WeightRowLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightRowLabel.swift; sourceTree = "<group>"; };
+		D403F043303E946000140095 /* WeightHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightHistoryView.swift; sourceTree = "<group>"; };
+		D403F045303E946700140095 /* WeightEntryEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEntryEditor.swift; sourceTree = "<group>"; };
+		D403F047303E948200140095 /* GoalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListView.swift; sourceTree = "<group>"; };
+		D403F049303E948D00140095 /* GoalEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditor.swift; sourceTree = "<group>"; };
+		D403F04B303E949D00140095 /* SavedMealsPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMealsPickerView.swift; sourceTree = "<group>"; };
+		D403F04D303E94A000140095 /* SavedMealItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMealItemRow.swift; sourceTree = "<group>"; };
+		D403F04F303E94A300140095 /* SavedMealDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMealDetailView.swift; sourceTree = "<group>"; };
+		D403F051303E94AB00140095 /* SavedMealsManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMealsManagerView.swift; sourceTree = "<group>"; };
+		D403F053303E94B400140095 /* SavedMealEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMealEditorView.swift; sourceTree = "<group>"; };
+		D403F055303E94BF00140095 /* SavedMealItemEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMealItemEditorView.swift; sourceTree = "<group>"; };
+		D403F057303E94D900140095 /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
+		D403F059303E94DE00140095 /* AccentColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentColorPicker.swift; sourceTree = "<group>"; };
+		D403F05B303E94EF00140095 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		D403F05D303E94F600140095 /* NavigationBarAccent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarAccent.swift; sourceTree = "<group>"; };
+		D403F05F303E94F800140095 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		D403F065303E95D100140095 /* DietBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietBuddyApp.swift; sourceTree = "<group>"; };
+		D403F067303E95D700140095 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +125,11 @@
 			children = (
 				000000000000000000000010 /* DietBuddy */,
 				000000000000000000000020 /* Products */,
+				D403F013303E92B700140095 /* Models */,
+				D403F014303E92CA00140095 /* App */,
+				D403F015303E92CB00140095 /* Support */,
+				D403F016303E92CC00140095 /* Services */,
+				D403F017303E92D200140095 /* Views */,
 			);
 			sourceTree = "<group>";
 		};
@@ -41,6 +139,126 @@
 				000000000000000000000120 /* DietBuddy.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D403F013303E92B700140095 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D403EFEB303C877700140095 /* Food.swift */,
+				D403EFE9303C856E00140095 /* WeightEntry.swift */,
+				D403EFED303C877A00140095 /* MealItem.swift */,
+				D403F009303CD44300140095 /* Meal.swift */,
+				D403EFF1303C877F00140095 /* Goal.swift */,
+				D403F01D303E92F200140095 /* SavedMeal.swift */,
+				D403F01F303E92FA00140095 /* SavedMealItem.swift */,
+				D403F021303E931100140095 /* PortionUnit.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D403F014303E92CA00140095 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D403F065303E95D100140095 /* DietBuddyApp.swift */,
+				D403F067303E95D700140095 /* RootTabView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D403F015303E92CB00140095 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				D403F011303CDB6300140095 /* SampleData.swift */,
+				D403F05B303E94EF00140095 /* Theme.swift */,
+				D403F05D303E94F600140095 /* NavigationBarAccent.swift */,
+				D403F05F303E94F800140095 /* EmptyStateView.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		D403F016303E92CC00140095 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D403F001303C8C5E00140095 /* FoodLookupService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D403F017303E92D200140095 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D403F018303E92D500140095 /* Weight */,
+				D403F019303E92D600140095 /* Food */,
+				D403F01A303E92D600140095 /* Goals */,
+				D403F01B303E92D600140095 /* SavedMeals */,
+				D403F01C303E92D700140095 /* Account */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D403F018303E92D500140095 /* Weight */ = {
+			isa = PBXGroup;
+			children = (
+				D403F03B303E944E00140095 /* WeightView.swift */,
+				D403F03D303E945200140095 /* WeightChartView.swift */,
+				D403F03F303E945500140095 /* WeightChangeSummaryView.swift */,
+				D403F041303E945B00140095 /* WeightRowLabel.swift */,
+				D403F043303E946000140095 /* WeightHistoryView.swift */,
+				D403F045303E946700140095 /* WeightEntryEditor.swift */,
+			);
+			path = Weight;
+			sourceTree = "<group>";
+		};
+		D403F019303E92D600140095 /* Food */ = {
+			isa = PBXGroup;
+			children = (
+				D403F003303C8C6900140095 /* BarcodeScannerView.swift */,
+				D403F00B303CD44F00140095 /* AddMealView.swift */,
+				D403F023303E931A00140095 /* AddMealItemView.swift */,
+				D403F025303E932300140095 /* ScanFoodView.swift */,
+				D403F027303E934100140095 /* FoodEntryForm.swift */,
+				D403F029303E93AE00140095 /* MealMainView.swift */,
+				D403F02B303E93C000140095 /* MealDisclosureView.swift */,
+				D403F02D303E93C400140095 /* MealEntry.swift */,
+				D403F02F303E93D400140095 /* MacroSummaryView.swift */,
+				D403F031303E93D600140095 /* MealItemRow.swift */,
+				D403F033303E93E700140095 /* MealItemDetailView.swift */,
+				D403F035303E93F000140095 /* MealBundleDetailView.swift */,
+				D403F037303E93FB00140095 /* MealHistoryView.swift */,
+				D403F039303E940100140095 /* SaveMealSheet.swift */,
+			);
+			path = Food;
+			sourceTree = "<group>";
+		};
+		D403F01A303E92D600140095 /* Goals */ = {
+			isa = PBXGroup;
+			children = (
+				D403F047303E948200140095 /* GoalListView.swift */,
+				D403F049303E948D00140095 /* GoalEditor.swift */,
+			);
+			path = Goals;
+			sourceTree = "<group>";
+		};
+		D403F01B303E92D600140095 /* SavedMeals */ = {
+			isa = PBXGroup;
+			children = (
+				D403F04B303E949D00140095 /* SavedMealsPickerView.swift */,
+				D403F04D303E94A000140095 /* SavedMealItemRow.swift */,
+				D403F04F303E94A300140095 /* SavedMealDetailView.swift */,
+				D403F051303E94AB00140095 /* SavedMealsManagerView.swift */,
+				D403F053303E94B400140095 /* SavedMealEditorView.swift */,
+				D403F055303E94BF00140095 /* SavedMealItemEditorView.swift */,
+			);
+			path = SavedMeals;
+			sourceTree = "<group>";
+		};
+		D403F01C303E92D700140095 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				D403F057303E94D900140095 /* AccountSettingsView.swift */,
+				D403F059303E94DE00140095 /* AccentColorPicker.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,6 +328,51 @@
 		000000000000000120000000 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
+				D403F050303E94A300140095 /* SavedMealDetailView.swift in Sources */,
+				D403F052303E94AB00140095 /* SavedMealsManagerView.swift in Sources */,
+				D403F024303E931A00140095 /* AddMealItemView.swift in Sources */,
+				D403F02C303E93C000140095 /* MealDisclosureView.swift in Sources */,
+				D403F044303E946000140095 /* WeightHistoryView.swift in Sources */,
+				D403F03A303E940100140095 /* SaveMealSheet.swift in Sources */,
+				D403F058303E94D900140095 /* AccountSettingsView.swift in Sources */,
+				D403F002303C8C5E00140095 /* FoodLookupService.swift in Sources */,
+				D403F042303E945B00140095 /* WeightRowLabel.swift in Sources */,
+				D403F056303E94BF00140095 /* SavedMealItemEditorView.swift in Sources */,
+				D403F03E303E945200140095 /* WeightChartView.swift in Sources */,
+				D403F040303E945500140095 /* WeightChangeSummaryView.swift in Sources */,
+				D403F048303E948200140095 /* GoalListView.swift in Sources */,
+				D403F04C303E949D00140095 /* SavedMealsPickerView.swift in Sources */,
+				D403EFEA303C856E00140095 /* WeightEntry.swift in Sources */,
+				D403F02E303E93C400140095 /* MealEntry.swift in Sources */,
+				D403EFEC303C877700140095 /* Food.swift in Sources */,
+				D403F012303CDB6300140095 /* SampleData.swift in Sources */,
+				D403F038303E93FB00140095 /* MealHistoryView.swift in Sources */,
+				D403F030303E93D400140095 /* MacroSummaryView.swift in Sources */,
+				D403F036303E93F000140095 /* MealBundleDetailView.swift in Sources */,
+				D403F00C303CD44F00140095 /* AddMealView.swift in Sources */,
+				D403F028303E934100140095 /* FoodEntryForm.swift in Sources */,
+				D403F03C303E944E00140095 /* WeightView.swift in Sources */,
+				D403F020303E92FA00140095 /* SavedMealItem.swift in Sources */,
+				D403F060303E94F800140095 /* EmptyStateView.swift in Sources */,
+				D403F00A303CD44300140095 /* Meal.swift in Sources */,
+				D403F01E303E92F200140095 /* SavedMeal.swift in Sources */,
+				D403F034303E93E700140095 /* MealItemDetailView.swift in Sources */,
+				D403F05C303E94EF00140095 /* Theme.swift in Sources */,
+				D403F046303E946700140095 /* WeightEntryEditor.swift in Sources */,
+				D403F068303E95D700140095 /* RootTabView.swift in Sources */,
+				D403F004303C8C6900140095 /* BarcodeScannerView.swift in Sources */,
+				D403F054303E94B400140095 /* SavedMealEditorView.swift in Sources */,
+				D403F05A303E94DE00140095 /* AccentColorPicker.swift in Sources */,
+				D403F022303E931100140095 /* PortionUnit.swift in Sources */,
+				D403F04E303E94A000140095 /* SavedMealItemRow.swift in Sources */,
+				D403F066303E95D100140095 /* DietBuddyApp.swift in Sources */,
+				D403F032303E93D600140095 /* MealItemRow.swift in Sources */,
+				D403F026303E932300140095 /* ScanFoodView.swift in Sources */,
+				D403EFF2303C877F00140095 /* Goal.swift in Sources */,
+				D403EFEE303C877A00140095 /* MealItem.swift in Sources */,
+				D403F04A303E948D00140095 /* GoalEditor.swift in Sources */,
+				D403F02A303E93AE00140095 /* MealMainView.swift in Sources */,
+				D403F05E303E94F600140095 /* NavigationBarAccent.swift in Sources */,
 			);
 		};
 /* End PBXSourcesBuildPhase section */
@@ -250,12 +513,16 @@
 		000000000000000111000000 /* Debug configuration for PBXNativeTarget "DietBuddy" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JSY2J3A5A2;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_CAMERA = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "DietBuddy uses the camera to scan food barcodes";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -266,10 +533,12 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = "$(RECOMMENDED_IPHONEOS_DEPLOYMENT_TARGET)";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "devplaceholder.$(PROJECT_UNIQUE_VALUE:identifier).$(PRODUCT_NAME:identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradycarden.DietBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
@@ -281,18 +550,23 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Debug;
 		};
 		000000000000000112000000 /* Release configuration for PBXNativeTarget "DietBuddy" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JSY2J3A5A2;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_CAMERA = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "DietBuddy uses the camera to scan food barcodes";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -303,10 +577,12 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = "$(RECOMMENDED_IPHONEOS_DEPLOYMENT_TARGET)";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "devplaceholder.$(PROJECT_UNIQUE_VALUE:identifier).$(PRODUCT_NAME:identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradycarden.DietBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
@@ -318,6 +594,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Release;
 		};
