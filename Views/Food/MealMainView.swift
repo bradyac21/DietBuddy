@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import WidgetKit
 
 /// Main food-tracking tab: the day's macro totals, user-created meals, and the active goal.
 struct MealMainView: View {
@@ -141,7 +142,31 @@ struct MealMainView: View {
             if !goals.isEmpty, !goals.contains(where: { $0.isActive }) {
                 goals.sorted { $0.createdAt > $1.createdAt }.first?.isActive = true
             }
+            updateWidgetSnapshot()
         }
+        .onChange(of: snapshotSignature) { _, _ in
+            updateWidgetSnapshot()
+        }
+    }
+
+    /// Changes whenever the day's totals or the active goal's targets change.
+    private var snapshotSignature: String {
+        "\(dayCalories) \(dayProtein) \(dayCarbs) \(dayFat) \(activeGoal?.dailyCalories ?? -1) \(activeGoal?.protein ?? -1) \(activeGoal?.carbs ?? -1) \(activeGoal?.fat ?? -1)"
+    }
+
+    /// Writes today's totals + active-goal targets to the App Group and refreshes the widget.
+    private func updateWidgetSnapshot() {
+        let snapshot = DaySnapshot(calories: dayCalories,
+                                   protein: dayProtein,
+                                   carbs: dayCarbs,
+                                   fat: dayFat,
+                                   calorieGoal: activeGoal?.dailyCalories,
+                                   proteinGoal: activeGoal?.protein,
+                                   carbGoal: activeGoal?.carbs,
+                                   fatGoal: activeGoal?.fat,
+                                   date: .now)
+        SharedStore.save(snapshot)
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     private func performSaveMeal(_ meal: Meal, name: String) {

@@ -54,7 +54,33 @@
 		D403F068303E95D700140095 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F067303E95D700140095 /* RootTabView.swift */; };
 		D4DB75F4303F1AD90050C594 /* ManualBarcodeEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB75F3303F1AD90050C594 /* ManualBarcodeEntryView.swift */; };
 		D4DB75F6303F615F0050C594 /* ReminderScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB75F5303F615F0050C594 /* ReminderScheduler.swift */; };
+		D4DB75FE303FB6430050C594 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DB75FD303FB6430050C594 /* WidgetKit.framework */; };
+		D4DB7600303FB6430050C594 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DB75FF303FB6430050C594 /* SwiftUI.framework */; };
+		D4DB7611303FB6440050C594 /* DietBuddyWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4DB75FB303FB6430050C594 /* DietBuddyWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D4DB761A303FB7900050C594 /* DaySnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7619303FB7900050C594 /* DaySnapshot.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D4DB760F303FB6440050C594 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000000000000000000000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4DB75FA303FB6430050C594;
+			remoteInfo = DietBuddyWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D4DB7616303FB6440050C594 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = PlugIns;
+			files = (
+				D4DB7611303FB6440050C594 /* DietBuddyWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		000000000000000000000120 /* DietBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DietBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,12 +131,35 @@
 		D403F067303E95D700140095 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		D4DB75F3303F1AD90050C594 /* ManualBarcodeEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualBarcodeEntryView.swift; sourceTree = "<group>"; };
 		D4DB75F5303F615F0050C594 /* ReminderScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderScheduler.swift; sourceTree = "<group>"; };
+		D4DB75FB303FB6430050C594 /* DietBuddyWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DietBuddyWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4DB75FD303FB6430050C594 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D4DB75FF303FB6430050C594 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		D4DB7618303FB6990050C594 /* DietBuddyWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DietBuddyWidgetExtension.entitlements; sourceTree = "<group>"; };
+		D4DB7619303FB7900050C594 /* DaySnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySnapshot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D4DB7612303FB6440050C594 /* Exceptions for "DietBuddyWidget" folder in "DietBuddyWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D4DB75FA303FB6430050C594 /* DietBuddyWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		000000000000000000000010 /* DietBuddy */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = DietBuddy;
+			sourceTree = "<group>";
+		};
+		D4DB7601303FB6430050C594 /* DietBuddyWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D4DB7612303FB6440050C594 /* Exceptions for "DietBuddyWidget" folder in "DietBuddyWidgetExtension" target */,
+			);
+			path = DietBuddyWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -121,13 +170,23 @@
 			files = (
 			);
 		};
+		D4DB75F8303FB6430050C594 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+				D4DB7600303FB6430050C594 /* SwiftUI.framework in Frameworks */,
+				D4DB75FE303FB6430050C594 /* WidgetKit.framework in Frameworks */,
+			);
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		000000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
+				D4DB7618303FB6990050C594 /* DietBuddyWidgetExtension.entitlements */,
 				000000000000000000000010 /* DietBuddy */,
+				D4DB7601303FB6430050C594 /* DietBuddyWidget */,
+				D4DB75FC303FB6430050C594 /* Frameworks */,
 				000000000000000000000020 /* Products */,
 				D403F013303E92B700140095 /* Models */,
 				D403F014303E92CA00140095 /* App */,
@@ -141,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				000000000000000000000120 /* DietBuddy.app */,
+				D4DB75FB303FB6430050C594 /* DietBuddyWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,6 +236,7 @@
 				D403F05B303E94EF00140095 /* Theme.swift */,
 				D403F05D303E94F600140095 /* NavigationBarAccent.swift */,
 				D403F05F303E94F800140095 /* EmptyStateView.swift */,
+				D4DB7619303FB7900050C594 /* DaySnapshot.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -267,6 +328,15 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		D4DB75FC303FB6430050C594 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D4DB75FD303FB6430050C594 /* WidgetKit.framework */,
+				D4DB75FF303FB6430050C594 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -277,8 +347,12 @@
 				000000000000000120000000 /* Sources */,
 				000000000000000130000000 /* Frameworks */,
 				000000000000000140000000 /* Resources */,
+				D4DB7616303FB6440050C594 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
+			);
+			dependencies = (
+				D4DB7610303FB6440050C594 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				000000000000000000000010 /* DietBuddy */,
@@ -288,6 +362,24 @@
 			productReference = 000000000000000000000120 /* DietBuddy.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D4DB75FA303FB6430050C594 /* DietBuddyWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4DB7613303FB6440050C594 /* Build configuration list for PBXNativeTarget "DietBuddyWidgetExtension" */;
+			buildPhases = (
+				D4DB75F7303FB6430050C594 /* Sources */,
+				D4DB75F8303FB6430050C594 /* Frameworks */,
+				D4DB75F9303FB6430050C594 /* Resources */,
+			);
+			buildRules = (
+			);
+			fileSystemSynchronizedGroups = (
+				D4DB7601303FB6430050C594 /* DietBuddyWidget */,
+			);
+			name = DietBuddyWidgetExtension;
+			productName = DietBuddyWidgetExtension;
+			productReference = D4DB75FB303FB6430050C594 /* DietBuddyWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -295,11 +387,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2630;
+				LastSwiftUpdateCheck = 2700;
 				LastUpgradeCheck = 2700;
 				TargetAttributes = {
 					000000000000000100000000 = {
 						CreatedOnToolsVersion = 26.3;
+					};
+					D4DB75FA303FB6430050C594 = {
+						CreatedOnToolsVersion = 27.0;
 					};
 				};
 			};
@@ -318,12 +413,18 @@
 			projectRoot = "";
 			targets = (
 				000000000000000100000000 /* DietBuddy */,
+				D4DB75FA303FB6430050C594 /* DietBuddyWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		000000000000000140000000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+		D4DB75F9303FB6430050C594 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
 			);
@@ -344,6 +445,7 @@
 				D403F002303C8C5E00140095 /* FoodLookupService.swift in Sources */,
 				D403F042303E945B00140095 /* WeightRowLabel.swift in Sources */,
 				D403F056303E94BF00140095 /* SavedMealItemEditorView.swift in Sources */,
+				D4DB761A303FB7900050C594 /* DaySnapshot.swift in Sources */,
 				D403F03E303E945200140095 /* WeightChartView.swift in Sources */,
 				D403F040303E945500140095 /* WeightChangeSummaryView.swift in Sources */,
 				D403F048303E948200140095 /* GoalListView.swift in Sources */,
@@ -383,7 +485,20 @@
 				D403F05E303E94F600140095 /* NavigationBarAccent.swift in Sources */,
 			);
 		};
+		D4DB75F7303FB6430050C594 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D4DB7610303FB6440050C594 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4DB75FA303FB6430050C594 /* DietBuddyWidgetExtension */;
+			targetProxy = D4DB760F303FB6440050C594 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		000000000000000011000000 /* Debug configuration for PBXProject "DietBuddy" */ = {
@@ -521,6 +636,7 @@
 		000000000000000111000000 /* Debug configuration for PBXNativeTarget "DietBuddy" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DietBuddy/DietBuddy.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -565,6 +681,7 @@
 		000000000000000112000000 /* Release configuration for PBXNativeTarget "DietBuddy" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DietBuddy/DietBuddy.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -606,6 +723,75 @@
 			};
 			name = Release;
 		};
+		D4DB7614303FB6440050C594 /* Debug configuration for PBXNativeTarget "DietBuddyWidgetExtension" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = DietBuddyWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JSY2J3A5A2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DietBuddyWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DietBuddyWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradycarden.DietBuddy.DietBuddyWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D4DB7615303FB6440050C594 /* Release configuration for PBXNativeTarget "DietBuddyWidgetExtension" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = DietBuddyWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JSY2J3A5A2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DietBuddyWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DietBuddyWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradycarden.DietBuddy.DietBuddyWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -622,6 +808,14 @@
 			buildConfigurations = (
 				000000000000000111000000 /* Debug configuration for PBXNativeTarget "DietBuddy" */,
 				000000000000000112000000 /* Release configuration for PBXNativeTarget "DietBuddy" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		D4DB7613303FB6440050C594 /* Build configuration list for PBXNativeTarget "DietBuddyWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4DB7614303FB6440050C594 /* Debug configuration for PBXNativeTarget "DietBuddyWidgetExtension" */,
+				D4DB7615303FB6440050C594 /* Release configuration for PBXNativeTarget "DietBuddyWidgetExtension" */,
 			);
 			defaultConfigurationName = Release;
 		};
