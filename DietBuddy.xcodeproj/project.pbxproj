@@ -58,6 +58,13 @@
 		D4DB7600303FB6430050C594 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DB75FF303FB6430050C594 /* SwiftUI.framework */; };
 		D4DB7611303FB6440050C594 /* DietBuddyWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4DB75FB303FB6430050C594 /* DietBuddyWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D4DB761A303FB7900050C594 /* DaySnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7619303FB7900050C594 /* DaySnapshot.swift */; };
+		D4DB761E3040CE680050C594 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB761D3040CE680050C594 /* Gender.swift */; };
+		D4DB76203040CE6C0050C594 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB761F3040CE6C0050C594 /* UserProfile.swift */; };
+		D4DB76223040CE6F0050C594 /* BMICalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB76213040CE6F0050C594 /* BMICalculator.swift */; };
+		D4DB76243040CF0D0050C594 /* HeightField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB76233040CF0D0050C594 /* HeightField.swift */; };
+		D4DB76263040CF140050C594 /* ProfileEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB76253040CF140050C594 /* ProfileEditorView.swift */; };
+		D4DB76283040CF810050C594 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB76273040CF810050C594 /* OnboardingView.swift */; };
+		D4DB76EF3041F7140050C594 /* PrimaryActionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB76EE3041F7140050C594 /* PrimaryActionButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +143,13 @@
 		D4DB75FF303FB6430050C594 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		D4DB7618303FB6990050C594 /* DietBuddyWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DietBuddyWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D4DB7619303FB7900050C594 /* DaySnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySnapshot.swift; sourceTree = "<group>"; };
+		D4DB761D3040CE680050C594 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		D4DB761F3040CE6C0050C594 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		D4DB76213040CE6F0050C594 /* BMICalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMICalculator.swift; sourceTree = "<group>"; };
+		D4DB76233040CF0D0050C594 /* HeightField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightField.swift; sourceTree = "<group>"; };
+		D4DB76253040CF140050C594 /* ProfileEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorView.swift; sourceTree = "<group>"; };
+		D4DB76273040CF810050C594 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		D4DB76EE3041F7140050C594 /* PrimaryActionButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryActionButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -216,6 +230,8 @@
 				D403F01D303E92F200140095 /* SavedMeal.swift */,
 				D403F01F303E92FA00140095 /* SavedMealItem.swift */,
 				D403F021303E931100140095 /* PortionUnit.swift */,
+				D4DB761D3040CE680050C594 /* Gender.swift */,
+				D4DB761F3040CE6C0050C594 /* UserProfile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,6 +241,7 @@
 			children = (
 				D403F065303E95D100140095 /* DietBuddyApp.swift */,
 				D403F067303E95D700140095 /* RootTabView.swift */,
+				D4DB76273040CF810050C594 /* OnboardingView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -237,6 +254,8 @@
 				D403F05D303E94F600140095 /* NavigationBarAccent.swift */,
 				D403F05F303E94F800140095 /* EmptyStateView.swift */,
 				D4DB7619303FB7900050C594 /* DaySnapshot.swift */,
+				D4DB76213040CE6F0050C594 /* BMICalculator.swift */,
+				D4DB76EE3041F7140050C594 /* PrimaryActionButtonStyle.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -324,6 +343,8 @@
 			children = (
 				D403F057303E94D900140095 /* AccountSettingsView.swift */,
 				D403F059303E94DE00140095 /* AccentColorPicker.swift */,
+				D4DB76233040CF0D0050C594 /* HeightField.swift */,
+				D4DB76253040CF140050C594 /* ProfileEditorView.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -448,14 +469,18 @@
 				D4DB761A303FB7900050C594 /* DaySnapshot.swift in Sources */,
 				D403F03E303E945200140095 /* WeightChartView.swift in Sources */,
 				D403F040303E945500140095 /* WeightChangeSummaryView.swift in Sources */,
+				D4DB76223040CE6F0050C594 /* BMICalculator.swift in Sources */,
+				D4DB761E3040CE680050C594 /* Gender.swift in Sources */,
 				D403F048303E948200140095 /* GoalListView.swift in Sources */,
 				D403F04C303E949D00140095 /* SavedMealsPickerView.swift in Sources */,
 				D403EFEA303C856E00140095 /* WeightEntry.swift in Sources */,
 				D403F02E303E93C400140095 /* MealEntry.swift in Sources */,
+				D4DB76EF3041F7140050C594 /* PrimaryActionButtonStyle.swift in Sources */,
 				D403EFEC303C877700140095 /* Food.swift in Sources */,
 				D403F012303CDB6300140095 /* SampleData.swift in Sources */,
 				D4DB75F4303F1AD90050C594 /* ManualBarcodeEntryView.swift in Sources */,
 				D403F038303E93FB00140095 /* MealHistoryView.swift in Sources */,
+				D4DB76203040CE6C0050C594 /* UserProfile.swift in Sources */,
 				D403F030303E93D400140095 /* MacroSummaryView.swift in Sources */,
 				D403F036303E93F000140095 /* MealBundleDetailView.swift in Sources */,
 				D403F00C303CD44F00140095 /* AddMealView.swift in Sources */,
@@ -471,16 +496,19 @@
 				D403F068303E95D700140095 /* RootTabView.swift in Sources */,
 				D403F004303C8C6900140095 /* BarcodeScannerView.swift in Sources */,
 				D403F054303E94B400140095 /* SavedMealEditorView.swift in Sources */,
+				D4DB76283040CF810050C594 /* OnboardingView.swift in Sources */,
 				D403F05A303E94DE00140095 /* AccentColorPicker.swift in Sources */,
 				D4DB75F6303F615F0050C594 /* ReminderScheduler.swift in Sources */,
 				D403F022303E931100140095 /* PortionUnit.swift in Sources */,
 				D403F04E303E94A000140095 /* SavedMealItemRow.swift in Sources */,
+				D4DB76263040CF140050C594 /* ProfileEditorView.swift in Sources */,
 				D403F066303E95D100140095 /* DietBuddyApp.swift in Sources */,
 				D403F032303E93D600140095 /* MealItemRow.swift in Sources */,
 				D403F026303E932300140095 /* ScanFoodView.swift in Sources */,
 				D403EFF2303C877F00140095 /* Goal.swift in Sources */,
 				D403EFEE303C877A00140095 /* MealItem.swift in Sources */,
 				D403F04A303E948D00140095 /* GoalEditor.swift in Sources */,
+				D4DB76243040CF0D0050C594 /* HeightField.swift in Sources */,
 				D403F02A303E93AE00140095 /* MealMainView.swift in Sources */,
 				D403F05E303E94F600140095 /* NavigationBarAccent.swift in Sources */,
 			);
@@ -636,7 +664,7 @@
 		000000000000000111000000 /* Debug configuration for PBXNativeTarget "DietBuddy" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = DietBuddy/DietBuddy.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
@@ -683,7 +711,7 @@
 		000000000000000112000000 /* Release configuration for PBXNativeTarget "DietBuddy" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = DietBuddy/DietBuddy.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";

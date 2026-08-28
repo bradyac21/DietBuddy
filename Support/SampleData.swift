@@ -72,6 +72,11 @@ enum SampleData {
 
         // Goal
         context.insert(Goal(title: "Cutting", dailyCalories: 2000, protein: 180, carbs: 180, fat: 60, isActive: true))
+
+        // Profile for the seeded user (onboarding still shows on a fresh install so it can be previewed).
+        let birthday = Calendar.current.date(byAdding: .year, value: -30, to: .now)
+        context.insert(UserProfile(birthday: birthday, gender: .male, heightCM: 180))
+        UserDefaults.standard.set("Alex", forKey: "displayName")
     }
 
     // MARK: - Logged meals (always the past three days, including today)

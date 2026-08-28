@@ -27,6 +27,7 @@ enum WeightPeriod: String, CaseIterable, Identifiable {
 struct WeightView: View {
     @Environment(\.appAccentColor) private var accent
     @Query(sort: \WeightEntry.date, order: .reverse) private var entries: [WeightEntry]
+    @Query private var profiles: [UserProfile]
     @AppStorage("weightUnit") private var weightUnit: String = "lb"
 
     @State private var period: WeightPeriod = .threeMonths
@@ -51,6 +52,12 @@ struct WeightView: View {
         return last - first
     }
 
+    /// BMI from the most recent weigh-in and the profile height, if both are available.
+    private var bmi: Double? {
+        guard let latest = entries.first?.weight else { return nil }
+        return BMICalculator.bmi(weight: latest, weightUnit: weightUnit, heightCM: profiles.first?.heightCM ?? 0)
+    }
+
     var body: some View {
         List {
             Section {
@@ -67,6 +74,16 @@ struct WeightView: View {
 
                 if let change {
                     WeightChangeSummaryView(change: change, unit: weightUnit, period: period.rawValue)
+                }
+
+                if let bmi {
+                    HStack {
+                        Text("BMI")
+                        Spacer()
+                        Text("\(bmi, format: .number.precision(.fractionLength(1)))")
+                        Text("· \(BMICalculator.category(bmi))").foregroundStyle(.secondary)
+                    }
+                    .font(.subheadline)
                 }
             }
 

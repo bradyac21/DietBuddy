@@ -7,7 +7,7 @@ struct MyApp: App {
 
     init() {
         let schema = Schema([WeightEntry.self, Food.self, Meal.self, MealItem.self, Goal.self,
-                             SavedMeal.self, SavedMealItem.self])
+                             SavedMeal.self, SavedMealItem.self, UserProfile.self])
         let configuration = ModelConfiguration(schema: schema)
 
         do {

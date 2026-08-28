@@ -7,6 +7,7 @@ struct RootTabView: View {
     @AppStorage("appearance") private var appearance: String = AppAppearance.system.rawValue
     @AppStorage("accentColorName") private var accentColorName: String = AppAccent.blue.rawValue
     @AppStorage("remindersEnabled") private var remindersEnabled = false
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
 
     private var preferredScheme: ColorScheme? {
         AppAppearance(rawValue: appearance)?.colorScheme
@@ -42,12 +43,15 @@ struct RootTabView: View {
                 Task { await ReminderScheduler.appBecameActive(remindersEnabled: remindersEnabled) }
             }
         }
+        .fullScreenCover(isPresented: Binding(get: { !hasCompletedOnboarding }, set: { _ in })) {
+            OnboardingView()
+        }
     }
 }
 
 #Preview {
     RootTabView()
         .modelContainer(for: [WeightEntry.self, Food.self, Meal.self, MealItem.self, Goal.self,
-                              SavedMeal.self, SavedMealItem.self],
+                              SavedMeal.self, SavedMealItem.self, UserProfile.self],
                         inMemory: true)
 }

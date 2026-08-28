@@ -38,6 +38,12 @@ struct AccountSettingsView: View {
                 Text("Your account is stored locally on this device.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
+
+                NavigationLink {
+                    ProfileEditorView()
+                } label: {
+                    Label("Profile & Body", systemImage: "person.text.rectangle")
+                }
             }
 
             Section("Meals") {
@@ -59,11 +65,25 @@ struct AccountSettingsView: View {
                     settingRow("Theme", value: AppAppearance(rawValue: appearance)?.displayName ?? "System")
                 }
 
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Accent Color")
-                    AccentColorPicker(selection: $accentColorName)
+                Menu {
+                    Picker("Accent Color", selection: $accentColorName) {
+                        ForEach(AppAccent.allCases) { option in
+                            Label(option.displayName, systemImage: "circle.fill")
+                                .foregroundStyle(option.color)
+                                .tag(option.rawValue)
+                        }
+                    }
+                } label: {
+                    HStack {
+                        Text("Accent Color").foregroundStyle(.primary)
+                        Spacer()
+                        Circle().fill(accent).frame(width: 22, height: 22)
+                        Image(systemName: "chevron.up.chevron.down")
+                            .font(.caption2)
+                            .foregroundStyle(accent)
+                    }
+                    .contentShape(Rectangle())
                 }
-                .padding(.vertical, 4)
             }
 
             Section("Units") {
