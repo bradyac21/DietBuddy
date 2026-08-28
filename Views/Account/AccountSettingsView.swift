@@ -68,9 +68,14 @@ struct AccountSettingsView: View {
                 Menu {
                     Picker("Accent Color", selection: $accentColorName) {
                         ForEach(AppAccent.allCases) { option in
-                            Label(option.displayName, systemImage: "circle.fill")
-                                .foregroundStyle(option.color)
-                                .tag(option.rawValue)
+                            Label {
+                                Text(option.displayName)
+                            } icon: {
+                                // A rendered swatch with .original rendering mode keeps its
+                                // color in the menu; a template symbol would be tinted blue.
+                                swatchImage(option.color)
+                            }
+                            .tag(option.rawValue)
                         }
                     }
                 } label: {
@@ -145,6 +150,18 @@ struct AccountSettingsView: View {
 
     private func refreshNotificationStatus() async {
         notificationsDenied = await ReminderScheduler.authorizationStatus() == .denied
+    }
+
+    /// Renders a filled circle to an image so menu items show their real color
+    /// (SF Symbols in a Picker menu are template-tinted and would all appear blue).
+    @MainActor
+    private func swatchImage(_ color: Color) -> Image {
+        let renderer = ImageRenderer(content: Circle().fill(color).frame(width: 18, height: 18))
+        renderer.scale = 3
+        if let uiImage = renderer.uiImage {
+            return Image(uiImage: uiImage).renderingMode(.original)
+        }
+        return Image(systemName: "circle.fill")
     }
 
     /// A settings row whose value and chevron use the accent color and update live with it.

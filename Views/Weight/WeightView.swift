@@ -28,11 +28,14 @@ struct WeightView: View {
     @Environment(\.appAccentColor) private var accent
     @Query(sort: \WeightEntry.date, order: .reverse) private var entries: [WeightEntry]
     @Query private var profiles: [UserProfile]
+    @Query private var meals: [Meal]
     @AppStorage("weightUnit") private var weightUnit: String = "lb"
 
     @State private var period: WeightPeriod = .threeMonths
     @State private var editingEntry: WeightEntry?
     @State private var isLogging = false
+    @State private var showCalories = false
+    @State private var showingBMIInfo = false
 
     /// Newest-first, limited to the chart window.
     private var filteredEntries: [WeightEntry] {
@@ -43,6 +46,21 @@ struct WeightView: View {
 
     /// Oldest-first, for charting.
     private var chartEntries: [WeightEntry] { filteredEntries.reversed() }
+
+    /// Per-day total calorie intake within the selected period, oldest-first.
+    private var caloriePoints: [CaloriePoint] {
+        let cutoff = period.days.map { Calendar.current.date(byAdding: .day, value: -$0, to: .now) ?? .distantPast }
+        var totals: [Date: Double] = [:]
+        for meal in meals {
+            if let cutoff, meal.date < cutoff { continue }
+            let day = Calendar.current.startOfDay(for: meal.date)
+            totals[day, default: 0] += meal.totalCalories
+        }
+        return totals
+            .filter { $0.value > 0 }   // days with meals but no nutrition data aren't real intake
+            .map { CaloriePoint(date: $0.key, calories: $0.value) }
+            .sorted { $0.date < $1.date }
+    }
 
     private var recentEntries: [WeightEntry] { Array(entries.prefix(3)) }
 
@@ -68,7 +86,9 @@ struct WeightView: View {
                 }
                 .pickerStyle(.segmented)
 
-                WeightChartView(entries: chartEntries)
+                WeightChartView(entries: chartEntries,
+                                caloriePoints: caloriePoints,
+                                showCalories: showCalories)
                     .frame(height: 220)
                     .padding(.vertical, 8)
 
@@ -79,8 +99,20 @@ struct WeightView: View {
                 if let bmi {
                     HStack {
                         Text("BMI")
+                        Button {
+                            showingBMIInfo = true
+                        } label: {
+                            Image(systemName: "info.circle")
+                        }
+                        .buttonStyle(.borderless)
+                        .foregroundStyle(accent)
+                        .popover(isPresented: $showingBMIInfo) {
+                            BMIInfoView()
+                                .presentationCompactAdaptation(.popover)
+                        }
                         Spacer()
                         Text("\(bmi, format: .number.precision(.fractionLength(1)))")
+                            .foregroundStyle(BMICalculator.categoryColor(bmi))
                         Text("· \(BMICalculator.category(bmi))").foregroundStyle(.secondary)
                     }
                     .font(.subheadline)
@@ -113,6 +145,18 @@ struct WeightView: View {
         }
         .navigationTitle("Weight")
         .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Menu {
+                    Button {
+                        showCalories.toggle()
+                    } label: {
+                        Label(showCalories ? "Hide Calorie Trend" : "Show Calorie Trend",
+                              systemImage: showCalories ? "flame.slash" : "flame")
+                    }
+                } label: {
+                    Label("Options", systemImage: "ellipsis.circle")
+                }
+            }
             ToolbarItem(placement: .primaryAction) {
                 Button {
                     isLogging = true

@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 
 /// Body Mass Index from a weight (in the user's unit) and a height in centimeters.
 enum BMICalculator {
@@ -20,6 +20,16 @@ enum BMICalculator {
         case 18.5..<25: "Normal"
         case 25..<30: "Overweight"
         default: "Obese"
+        }
+    }
+
+    /// The color used for each BMI category, shared by the value label and the info popover.
+    static func categoryColor(_ bmi: Double) -> Color {
+        switch bmi {
+        case ..<18.5: .blue
+        case 18.5..<25: .green
+        case 25..<30: .orange
+        default: .red
         }
     }
 }

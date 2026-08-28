@@ -65,6 +65,11 @@
 		D4DB76263040CF140050C594 /* ProfileEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB76253040CF140050C594 /* ProfileEditorView.swift */; };
 		D4DB76283040CF810050C594 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB76273040CF810050C594 /* OnboardingView.swift */; };
 		D4DB76EF3041F7140050C594 /* PrimaryActionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB76EE3041F7140050C594 /* PrimaryActionButtonStyle.swift */; };
+		D4DB76F13042151D0050C594 /* BMIInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB76F03042151D0050C594 /* BMIInfoView.swift */; };
+		D4DB76F3304218420050C594 /* MealSummaryDisclosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB76F2304218420050C594 /* MealSummaryDisclosure.swift */; };
+		D4DB76F5304218510050C594 /* DayFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB76F4304218510050C594 /* DayFoodView.swift */; };
+		D4DB76F7304218640050C594 /* HistoryCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB76F6304218640050C594 /* HistoryCalendarView.swift */; };
+		D4DB76F9304219680050C594 /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB76F8304219680050C594 /* ShakeEffect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +155,11 @@
 		D4DB76253040CF140050C594 /* ProfileEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorView.swift; sourceTree = "<group>"; };
 		D4DB76273040CF810050C594 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D4DB76EE3041F7140050C594 /* PrimaryActionButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryActionButtonStyle.swift; sourceTree = "<group>"; };
+		D4DB76F03042151D0050C594 /* BMIInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIInfoView.swift; sourceTree = "<group>"; };
+		D4DB76F2304218420050C594 /* MealSummaryDisclosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSummaryDisclosure.swift; sourceTree = "<group>"; };
+		D4DB76F4304218510050C594 /* DayFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayFoodView.swift; sourceTree = "<group>"; };
+		D4DB76F6304218640050C594 /* HistoryCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCalendarView.swift; sourceTree = "<group>"; };
+		D4DB76F8304219680050C594 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -256,6 +266,7 @@
 				D4DB7619303FB7900050C594 /* DaySnapshot.swift */,
 				D4DB76213040CE6F0050C594 /* BMICalculator.swift */,
 				D4DB76EE3041F7140050C594 /* PrimaryActionButtonStyle.swift */,
+				D4DB76F8304219680050C594 /* ShakeEffect.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -290,6 +301,7 @@
 				D403F041303E945B00140095 /* WeightRowLabel.swift */,
 				D403F043303E946000140095 /* WeightHistoryView.swift */,
 				D403F045303E946700140095 /* WeightEntryEditor.swift */,
+				D4DB76F03042151D0050C594 /* BMIInfoView.swift */,
 			);
 			path = Weight;
 			sourceTree = "<group>";
@@ -312,6 +324,9 @@
 				D403F037303E93FB00140095 /* MealHistoryView.swift */,
 				D403F039303E940100140095 /* SaveMealSheet.swift */,
 				D4DB75F3303F1AD90050C594 /* ManualBarcodeEntryView.swift */,
+				D4DB76F2304218420050C594 /* MealSummaryDisclosure.swift */,
+				D4DB76F4304218510050C594 /* DayFoodView.swift */,
+				D4DB76F6304218640050C594 /* HistoryCalendarView.swift */,
 			);
 			path = Food;
 			sourceTree = "<group>";
@@ -475,6 +490,7 @@
 				D403F04C303E949D00140095 /* SavedMealsPickerView.swift in Sources */,
 				D403EFEA303C856E00140095 /* WeightEntry.swift in Sources */,
 				D403F02E303E93C400140095 /* MealEntry.swift in Sources */,
+				D4DB76F7304218640050C594 /* HistoryCalendarView.swift in Sources */,
 				D4DB76EF3041F7140050C594 /* PrimaryActionButtonStyle.swift in Sources */,
 				D403EFEC303C877700140095 /* Food.swift in Sources */,
 				D403F012303CDB6300140095 /* SampleData.swift in Sources */,
@@ -483,6 +499,7 @@
 				D4DB76203040CE6C0050C594 /* UserProfile.swift in Sources */,
 				D403F030303E93D400140095 /* MacroSummaryView.swift in Sources */,
 				D403F036303E93F000140095 /* MealBundleDetailView.swift in Sources */,
+				D4DB76F13042151D0050C594 /* BMIInfoView.swift in Sources */,
 				D403F00C303CD44F00140095 /* AddMealView.swift in Sources */,
 				D403F028303E934100140095 /* FoodEntryForm.swift in Sources */,
 				D403F03C303E944E00140095 /* WeightView.swift in Sources */,
@@ -507,10 +524,13 @@
 				D403F026303E932300140095 /* ScanFoodView.swift in Sources */,
 				D403EFF2303C877F00140095 /* Goal.swift in Sources */,
 				D403EFEE303C877A00140095 /* MealItem.swift in Sources */,
+				D4DB76F9304219680050C594 /* ShakeEffect.swift in Sources */,
 				D403F04A303E948D00140095 /* GoalEditor.swift in Sources */,
 				D4DB76243040CF0D0050C594 /* HeightField.swift in Sources */,
+				D4DB76F3304218420050C594 /* MealSummaryDisclosure.swift in Sources */,
 				D403F02A303E93AE00140095 /* MealMainView.swift in Sources */,
 				D403F05E303E94F600140095 /* NavigationBarAccent.swift in Sources */,
+				D4DB76F5304218510050C594 /* DayFoodView.swift in Sources */,
 			);
 		};
 		D4DB75F7303FB6430050C594 /* Sources */ = {
