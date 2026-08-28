@@ -5,6 +5,7 @@ import WidgetKit
 /// Main food-tracking tab: the day's macro totals, user-created meals, and the active goal.
 struct MealMainView: View {
     @Environment(\.modelContext) private var context
+    @Environment(\.appAccentColor) private var accent
     @Query(sort: [SortDescriptor(\Meal.date, order: .reverse),
                   SortDescriptor(\Meal.sortIndex)]) private var allMeals: [Meal]
     @Query private var goals: [Goal]
@@ -62,6 +63,13 @@ struct MealMainView: View {
                                            onAddItem: { addItemTarget = $0 },
                                            onSaveMeal: { savingMeal = $0 },
                                            onUnsaveMeal: { unsaveMeal($0) })
+                    }
+
+                    Button {
+                        isAddingMeal = true
+                    } label: {
+                        Label("Add Meal", systemImage: "plus")
+                            .foregroundStyle(accent)
                     }
                 }
             }

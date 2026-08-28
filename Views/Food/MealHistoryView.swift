@@ -1,20 +1,53 @@
 import SwiftUI
 import SwiftData
 
-/// Shows past days of tracked meals, grouped by day and meal.
+/// Past days of tracked meals. Defaults to a scrollable day-by-day list, with a
+/// toolbar toggle to a month calendar for jumping to a specific day.
 struct MealHistoryView: View {
     @Query(sort: [SortDescriptor(\Meal.date, order: .reverse),
                   SortDescriptor(\Meal.sortIndex)]) private var allMeals: [Meal]
 
+    private enum Mode { case list, calendar }
+    @State private var mode: Mode = .list
+
+    private var trackedMeals: [Meal] { allMeals.filter { !$0.items.isEmpty } }
+
     private var days: [(date: Date, meals: [Meal])] {
-        let tracked = allMeals.filter { !$0.items.isEmpty }
-        let grouped = Dictionary(grouping: tracked) { Calendar.current.startOfDay(for: $0.date) }
+        let grouped = Dictionary(grouping: trackedMeals) { Calendar.current.startOfDay(for: $0.date) }
         return grouped
             .map { (date: $0.key, meals: $0.value.sorted { $0.sortIndex < $1.sortIndex }) }
             .sorted { $0.date > $1.date }
     }
 
+    /// Start-of-day dates that have logged food, for marking calendar cells.
+    private var daysWithData: Set<Date> {
+        Set(trackedMeals.map { Calendar.current.startOfDay(for: $0.date) })
+    }
+
     var body: some View {
+        Group {
+            switch mode {
+            case .list:
+                listView
+            case .calendar:
+                HistoryCalendarView(daysWithData: daysWithData)
+            }
+        }
+        .navigationTitle("History")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    withAnimation { mode = (mode == .list ? .calendar : .list) }
+                } label: {
+                    Image(systemName: mode == .list ? "calendar" : "list.bullet")
+                }
+                .accessibilityLabel(mode == .list ? "Calendar view" : "List view")
+            }
+        }
+    }
+
+    private var listView: some View {
         List {
             if days.isEmpty {
                 EmptyStateView(title: "No History",
@@ -24,23 +57,7 @@ struct MealHistoryView: View {
                 ForEach(days, id: \.date) { day in
                     Section(day.date.formatted(.dateTime.weekday().month().day())) {
                         ForEach(day.meals) { meal in
-                            VStack(alignment: .leading, spacing: 6) {
-                                HStack {
-                                    Text(meal.name).font(.headline)
-                                    Spacer()
-                                    Text("\(meal.totalCalories, format: .number.precision(.fractionLength(0)))\(meal.hasMissingNutrition ? "*" : "") kcal")
-                                        .foregroundStyle(.secondary)
-                                }
-                                ForEach(mealEntries(meal.items)) { entry in
-                                    switch entry {
-                                    case .item(let item):
-                                        MealItemRow(item: item)
-                                    case .bundle(_, let name, let items):
-                                        BundleRow(name: name, items: items)
-                                    }
-                                }
-                            }
-                            .padding(.vertical, 2)
+                            MealSummaryDisclosure(meal: meal)
                         }
 
                         let dayTotal = day.meals.reduce(0) { $0 + $1.totalCalories }
@@ -54,7 +71,5 @@ struct MealHistoryView: View {
                 }
             }
         }
-        .navigationTitle("History")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
