@@ -4,7 +4,7 @@ import SwiftUI
 /// disclosure group (items or saved-meal bundles + a macro line) but has no editing.
 struct MealSummaryDisclosure: View {
     let meal: Meal
-    @State private var isExpanded = true
+    @State private var isExpanded = false
 
     var body: some View {
         DisclosureGroup(isExpanded: $isExpanded) {

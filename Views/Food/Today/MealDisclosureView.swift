@@ -11,7 +11,7 @@ struct MealDisclosureView: View {
     var onSaveMeal: (Meal) -> Void
     var onUnsaveMeal: (Meal) -> Void
 
-    @State private var isExpanded = true
+    @State private var isExpanded = false
 
     var body: some View {
         DisclosureGroup(isExpanded: $isExpanded) {
