@@ -45,7 +45,7 @@
 		D403F052303E94AB00140095 /* SavedMealsManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F051303E94AB00140095 /* SavedMealsManagerView.swift */; };
 		D403F054303E94B400140095 /* SavedMealEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F053303E94B400140095 /* SavedMealEditorView.swift */; };
 		D403F056303E94BF00140095 /* SavedMealItemEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F055303E94BF00140095 /* SavedMealItemEditorView.swift */; };
-		D403F058303E94D900140095 /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F057303E94D900140095 /* AccountSettingsView.swift */; };
+		D403F058303E94D900140095 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F057303E94D900140095 /* SettingsView.swift */; };
 		D403F05A303E94DE00140095 /* AccentColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F059303E94DE00140095 /* AccentColorPicker.swift */; };
 		D403F05C303E94EF00140095 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F05B303E94EF00140095 /* Theme.swift */; };
 		D403F05E303E94F600140095 /* NavigationBarAccent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F05D303E94F600140095 /* NavigationBarAccent.swift */; };
@@ -139,7 +139,7 @@
 		D403F051303E94AB00140095 /* SavedMealsManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMealsManagerView.swift; sourceTree = "<group>"; };
 		D403F053303E94B400140095 /* SavedMealEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMealEditorView.swift; sourceTree = "<group>"; };
 		D403F055303E94BF00140095 /* SavedMealItemEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMealItemEditorView.swift; sourceTree = "<group>"; };
-		D403F057303E94D900140095 /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
+		D403F057303E94D900140095 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D403F059303E94DE00140095 /* AccentColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentColorPicker.swift; sourceTree = "<group>"; };
 		D403F05B303E94EF00140095 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		D403F05D303E94F600140095 /* NavigationBarAccent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarAccent.swift; sourceTree = "<group>"; };
@@ -294,7 +294,7 @@
 				D403F019303E92D600140095 /* Food */,
 				D403F01A303E92D600140095 /* Goals */,
 				D403F01B303E92D600140095 /* SavedMeals */,
-				D403F01C303E92D700140095 /* Account */,
+				D403F01C303E92D700140095 /* Settings */,
 				D4DB7709304244D90050C594 /* Components */,
 			);
 			path = Views;
@@ -351,13 +351,13 @@
 			path = SavedMeals;
 			sourceTree = "<group>";
 		};
-		D403F01C303E92D700140095 /* Account */ = {
+		D403F01C303E92D700140095 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				D403F057303E94D900140095 /* AccountSettingsView.swift */,
+				D403F057303E94D900140095 /* SettingsView.swift */,
 				D4DB76253040CF140050C594 /* ProfileEditorView.swift */,
 			);
-			path = Account;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		D4DB75FC303FB6430050C594 /* Frameworks */ = {
@@ -533,7 +533,7 @@
 				D4DB773630434A230050C594 /* FoodLibraryRow.swift in Sources */,
 				D403F044303E946000140095 /* WeightHistoryView.swift in Sources */,
 				D403F03A303E940100140095 /* SaveMealSheet.swift in Sources */,
-				D403F058303E94D900140095 /* AccountSettingsView.swift in Sources */,
+				D403F058303E94D900140095 /* SettingsView.swift in Sources */,
 				D403F002303C8C5E00140095 /* FoodLookupService.swift in Sources */,
 				D403F042303E945B00140095 /* WeightRowLabel.swift in Sources */,
 				D403F056303E94BF00140095 /* SavedMealItemEditorView.swift in Sources */,

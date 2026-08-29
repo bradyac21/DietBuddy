@@ -1,8 +1,8 @@
 import SwiftUI
 import UIKit
 
-/// Account & settings tab. The account is stored locally for now.
-struct AccountSettingsView: View {
+/// Settings tab. The account is stored locally for now.
+struct SettingsView: View {
     @Environment(\.appAccentColor) private var accent
     @Environment(\.openURL) private var openURL
     @State private var notificationsDenied = false
@@ -11,6 +11,7 @@ struct AccountSettingsView: View {
     @AppStorage("accentColorName") private var accentColorName: String = AppAccent.blue.rawValue
     @AppStorage("weightUnit") private var weightUnit: String = "lb"
     @AppStorage("remindersEnabled") private var remindersEnabled = false
+    @AppStorage("showBMI") private var showBMI = true
 
     private var feedbackURL: URL? {
         var components = URLComponents()
@@ -28,22 +29,23 @@ struct AccountSettingsView: View {
 
     var body: some View {
         List {
-            Section("Account") {
+            Section {
                 HStack {
                     Image(systemName: "person.crop.circle.fill")
                         .font(.largeTitle)
                         .foregroundStyle(.secondary)
                     TextField("Your name", text: $displayName)
                 }
-                Text("Your account is stored locally on this device.")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
 
                 NavigationLink {
                     ProfileEditorView()
                 } label: {
                     Label("Profile & Body", systemImage: "person.text.rectangle")
                 }
+            } header: {
+                Text("Account")
+            } footer: {
+                Text("Your account is stored locally on this device.")
             }
 
             Section("Meals") {
@@ -52,6 +54,14 @@ struct AccountSettingsView: View {
                 } label: {
                     Label("Saved Meals", systemImage: "bookmark")
                 }
+            }
+
+            Section {
+                Toggle("Show BMI", isOn: $showBMI)
+            } header: {
+                Text("Health")
+            } footer: {
+                Text("BMI is a rough screening metric based only on height and weight, so it can misclassify muscular builds. Turn it off to hide it on the Weight tab.")
             }
 
             Section("Appearance") {
@@ -144,7 +154,7 @@ struct AccountSettingsView: View {
                 }
             }
         }
-        .navigationTitle("Account")
+        .navigationTitle("Settings")
         .task { await refreshNotificationStatus() }
     }
 

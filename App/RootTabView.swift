@@ -1,7 +1,7 @@
 import SwiftUI
 import SwiftData
 
-/// Three-tab root: Weight tracking, Food tracking, and Account/Settings.
+/// Three-tab root: Weight tracking, Food tracking, and Settings.
 struct RootTabView: View {
     @Environment(\.scenePhase) private var scenePhase
     @AppStorage("appearance") private var appearance: String = AppAppearance.system.rawValue
@@ -18,7 +18,7 @@ struct RootTabView: View {
     }
 
     /// Tabs, in display order. The app opens to Food.
-    private enum AppTab: Hashable { case weight, food, account }
+    private enum AppTab: Hashable { case weight, food, settings }
     @State private var selection: AppTab = .food
 
     var body: some View {
@@ -29,8 +29,8 @@ struct RootTabView: View {
             Tab("Food", systemImage: "fork.knife", value: AppTab.food) {
                 NavigationStack { MealMainView() }
             }
-            Tab("Account", systemImage: "person.crop.circle", value: AppTab.account) {
-                NavigationStack { AccountSettingsView() }
+            Tab("Settings", systemImage: "gearshape", value: AppTab.settings) {
+                NavigationStack { SettingsView() }
             }
         }
         .tint(accentColor)
