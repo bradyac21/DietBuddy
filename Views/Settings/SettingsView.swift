@@ -65,39 +65,47 @@ struct SettingsView: View {
             }
 
             Section("Appearance") {
-                Menu {
-                    Picker("Theme", selection: $appearance) {
-                        ForEach(AppAppearance.allCases) { option in
-                            Text(option.displayName).tag(option.rawValue)
+                // Only the right side is a Menu so the row label stays primary (white),
+                // instead of the whole row being a tinted button.
+                HStack {
+                    Text("Theme")
+                    Spacer()
+                    Menu {
+                        Picker("Theme", selection: $appearance) {
+                            ForEach(AppAppearance.allCases) { option in
+                                Text(option.displayName).tag(option.rawValue)
+                            }
+                        }
+                    } label: {
+                        HStack(spacing: 4) {
+                            Text(AppAppearance(rawValue: appearance)?.displayName ?? "System")
+                            Image(systemName: "chevron.up.chevron.down").font(.caption2)
                         }
                     }
-                } label: {
-                    SettingRow(title: "Theme", value: AppAppearance(rawValue: appearance)?.displayName ?? "System")
                 }
 
-                Menu {
-                    Picker("Accent Color", selection: $accentColorName) {
-                        ForEach(AppAccent.allCases) { option in
-                            Label {
-                                Text(option.displayName)
-                            } icon: {
-                                // A rendered swatch with .original rendering mode keeps its
-                                // color in the menu; a template symbol would be tinted blue.
-                                swatchImage(option.color)
+                HStack {
+                    Text("Accent Color")
+                    Spacer()
+                    Menu {
+                        Picker("Accent Color", selection: $accentColorName) {
+                            ForEach(AppAccent.allCases) { option in
+                                Label {
+                                    Text(option.displayName)
+                                } icon: {
+                                    // A rendered swatch with .original rendering mode keeps its
+                                    // color in the menu; a template symbol would be tinted blue.
+                                    swatchImage(option.color)
+                                }
+                                .tag(option.rawValue)
                             }
-                            .tag(option.rawValue)
+                        }
+                    } label: {
+                        HStack(spacing: 8) {
+                            Circle().fill(accent).frame(width: 22, height: 22)
+                            Image(systemName: "chevron.up.chevron.down").font(.caption2)
                         }
                     }
-                } label: {
-                    HStack {
-                        Text("Accent Color").foregroundStyle(.primary)
-                        Spacer()
-                        Circle().fill(accent).frame(width: 22, height: 22)
-                        Image(systemName: "chevron.up.chevron.down")
-                            .font(.caption2)
-                            .foregroundStyle(accent)
-                    }
-                    .contentShape(Rectangle())
                 }
             }
 
