@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import UIKit
 
 /// First-run intro in three phases: Welcome → About You (optional) → Features.
 /// Uses a NavigationStack so Back is the native navigation-bar button, and tints
@@ -104,6 +105,11 @@ private struct AboutYouPhase: View {
     let onContinue: () -> Void
     let onSkip: () -> Void
 
+    /// The live accent color; applied directly to the gender picker so its value
+    /// re-tints when the accent changes (a menu Picker doesn't pick up environment
+    /// tint changes on its own).
+    private var accent: Color { AppAccent(rawValue: accentColorName)?.color ?? .blue }
+
     var body: some View {
         VStack(spacing: 0) {
             Form {
@@ -115,6 +121,8 @@ private struct AboutYouPhase: View {
                     Picker("Gender", selection: $gender) {
                         ForEach(Gender.allCases) { Text($0.displayName).tag($0) }
                     }
+                    .tint(accent)
+                    .id(accentColorName)
 
                     HeightField(heightCM: $heightCM, isMetric: isMetric)
                 } header: {
@@ -132,6 +140,15 @@ private struct AboutYouPhase: View {
                     Text("Sets the color used to tint buttons and highlights throughout the app.")
                 }
             }
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                                        to: nil, from: nil, for: nil)
+                    }
+                }
+            }
 
             VStack(spacing: 12) {
                 ContinueButton(title: "Continue", action: onContinue)
@@ -139,6 +156,8 @@ private struct AboutYouPhase: View {
             }
             .padding(.bottom)
         }
+        // Keep the buttons pinned so the keyboard covers them instead of pushing them up.
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 
