@@ -40,13 +40,13 @@ struct SavedMealItemEditorView: View {
                 TextField("Brand (optional)", text: $brandText)
             }
             Section("Nutrition (per 100 g)") {
-                macroField("Calories (kcal)", text: $caloriesText)
-                macroField("Protein (g)", text: $proteinText)
-                macroField("Carbs (g)", text: $carbsText)
-                macroField("Fat (g)", text: $fatText)
+                LabeledDecimalField(label: "Calories (kcal)", text: $caloriesText)
+                LabeledDecimalField(label: "Protein (g)", text: $proteinText)
+                LabeledDecimalField(label: "Carbs (g)", text: $carbsText)
+                LabeledDecimalField(label: "Fat (g)", text: $fatText)
             }
             Section("Portion") {
-                macroField("Grams", text: $gramsText)
+                LabeledDecimalField(label: "Grams", text: $gramsText)
             }
         }
         .navigationTitle("Edit Item")
@@ -56,16 +56,6 @@ struct SavedMealItemEditorView: View {
                 Button("Save") { save() }
                     .disabled(!canSave)
             }
-        }
-    }
-
-    private func macroField(_ label: String, text: Binding<String>) -> some View {
-        HStack {
-            Text(label)
-            Spacer()
-            TextField(label, text: text)
-                .keyboardType(.decimalPad)
-                .multilineTextAlignment(.trailing)
         }
     }
 

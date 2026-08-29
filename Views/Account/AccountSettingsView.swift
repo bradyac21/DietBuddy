@@ -62,7 +62,7 @@ struct AccountSettingsView: View {
                         }
                     }
                 } label: {
-                    settingRow("Theme", value: AppAppearance(rawValue: appearance)?.displayName ?? "System")
+                    SettingRow(title: "Theme", value: AppAppearance(rawValue: appearance)?.displayName ?? "System")
                 }
 
                 Menu {
@@ -98,7 +98,7 @@ struct AccountSettingsView: View {
                         Text("Kilograms (kg)").tag("kg")
                     }
                 } label: {
-                    settingRow("Weight Unit", value: weightUnit == "kg" ? "Kilograms (kg)" : "Pounds (lb)")
+                    SettingRow(title: "Weight Unit", value: weightUnit == "kg" ? "Kilograms (kg)" : "Pounds (lb)")
                 }
             }
 
@@ -164,8 +164,15 @@ struct AccountSettingsView: View {
         return Image(systemName: "circle.fill")
     }
 
-    /// A settings row whose value and chevron use the accent color and update live with it.
-    private func settingRow(_ title: String, value: String) -> some View {
+}
+
+/// A settings row whose value and chevron use the accent color and update live with it.
+private struct SettingRow: View {
+    @Environment(\.appAccentColor) private var accent
+    let title: String
+    let value: String
+
+    var body: some View {
         HStack {
             Text(title).foregroundStyle(.primary)
             Spacer()

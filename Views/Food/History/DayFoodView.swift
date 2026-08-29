@@ -6,7 +6,6 @@ import SwiftData
 struct DayFoodView: View {
     @Query(sort: [SortDescriptor(\Meal.date, order: .reverse),
                   SortDescriptor(\Meal.sortIndex)]) private var allMeals: [Meal]
-    @Environment(\.appAccentColor) private var accent
 
     @State var date: Date
     @State private var shakeTrigger = 0
@@ -39,7 +38,10 @@ struct DayFoodView: View {
     var body: some View {
         List {
             Section {
-                header
+                DayNavigationHeader(date: date,
+                                    shakeTrigger: shakeTrigger,
+                                    onBack: { canGoBack ? shiftDay(by: -1) : triggerShake() },
+                                    onForward: { canGoForward ? shiftDay(by: 1) : triggerShake() })
             }
 
             if dayMeals.isEmpty {
@@ -74,11 +76,28 @@ struct DayFoodView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    private var header: some View {
+    private func shiftDay(by days: Int) {
+        if let newDate = calendar.date(byAdding: .day, value: days, to: date) {
+            withAnimation { date = newDate }
+        }
+    }
+
+    private func triggerShake() {
+        withAnimation(.linear(duration: 0.4)) { shakeTrigger += 1 }
+    }
+}
+
+/// The date header for a day, with previous/next buttons. Out-of-range taps shake the date.
+private struct DayNavigationHeader: View {
+    @Environment(\.appAccentColor) private var accent
+    let date: Date
+    let shakeTrigger: Int
+    let onBack: () -> Void
+    let onForward: () -> Void
+
+    var body: some View {
         HStack {
-            Button {
-                if canGoBack { shiftDay(by: -1) } else { triggerShake() }
-            } label: {
+            Button(action: onBack) {
                 Image(systemName: "chevron.left")
             }
             .buttonStyle(.borderless)
@@ -96,24 +115,12 @@ struct DayFoodView: View {
 
             Spacer()
 
-            Button {
-                if canGoForward { shiftDay(by: 1) } else { triggerShake() }
-            } label: {
+            Button(action: onForward) {
                 Image(systemName: "chevron.right")
             }
             .buttonStyle(.borderless)
         }
         .font(.title3)
         .foregroundStyle(accent)
-    }
-
-    private func shiftDay(by days: Int) {
-        if let newDate = calendar.date(byAdding: .day, value: days, to: date) {
-            withAnimation { date = newDate }
-        }
-    }
-
-    private func triggerShake() {
-        withAnimation(.linear(duration: 0.4)) { shakeTrigger += 1 }
     }
 }

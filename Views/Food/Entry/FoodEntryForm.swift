@@ -128,15 +128,15 @@ struct FoodEntryForm: View {
 
             Section {
                 if isReadOnly {
-                    readOnlyMacro("Calories", scannedDraft.calories, unit: "kcal")
-                    readOnlyMacro("Protein", scannedDraft.protein, unit: "g")
-                    readOnlyMacro("Carbs", scannedDraft.carbs, unit: "g")
-                    readOnlyMacro("Fat", scannedDraft.fat, unit: "g")
+                    MacroValueRow(label: "Calories", value: scannedDraft.calories, unit: "kcal")
+                    MacroValueRow(label: "Protein", value: scannedDraft.protein, unit: "g")
+                    MacroValueRow(label: "Carbs", value: scannedDraft.carbs, unit: "g")
+                    MacroValueRow(label: "Fat", value: scannedDraft.fat, unit: "g")
                 } else {
-                    macroField("Calories (kcal)", text: $caloriesText)
-                    macroField("Protein (g)", text: $proteinText)
-                    macroField("Carbs (g)", text: $carbsText)
-                    macroField("Fat (g)", text: $fatText)
+                    LabeledDecimalField(label: "Calories (kcal)", text: $caloriesText)
+                    LabeledDecimalField(label: "Protein (g)", text: $proteinText)
+                    LabeledDecimalField(label: "Carbs (g)", text: $carbsText)
+                    LabeledDecimalField(label: "Fat (g)", text: $fatText)
                 }
             } header: {
                 Text("Nutrition (per 100 g)")
@@ -170,20 +170,6 @@ struct FoodEntryForm: View {
                     .disabled(!canAdd)
             }
         }
-    }
-
-    private func macroField(_ label: String, text: Binding<String>) -> some View {
-        HStack {
-            Text(label)
-            Spacer()
-            TextField(label, text: text)
-                .keyboardType(.decimalPad)
-                .multilineTextAlignment(.trailing)
-        }
-    }
-
-    private func readOnlyMacro(_ label: String, _ value: Double?, unit: String) -> some View {
-        LabeledContent(label, value: value.map { "\($0.formatted(.number.precision(.fractionLength(0...1)))) \(unit)" } ?? "—")
     }
 
     private static func numberString(_ value: Double?) -> String {
