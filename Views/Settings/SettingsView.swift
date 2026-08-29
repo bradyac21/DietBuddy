@@ -110,13 +110,20 @@ struct SettingsView: View {
             }
 
             Section("Units") {
-                Menu {
-                    Picker("Weight Unit", selection: $weightUnit) {
-                        Text("Pounds (lb)").tag("lb")
-                        Text("Kilograms (kg)").tag("kg")
+                HStack {
+                    Text("Weight Unit")
+                    Spacer()
+                    Menu {
+                        Picker("Weight Unit", selection: $weightUnit) {
+                            Text("Pounds (lb)").tag("lb")
+                            Text("Kilograms (kg)").tag("kg")
+                        }
+                    } label: {
+                        HStack(spacing: 4) {
+                            Text(weightUnit == "kg" ? "Kilograms (kg)" : "Pounds (lb)")
+                            Image(systemName: "chevron.up.chevron.down").font(.caption2)
+                        }
                     }
-                } label: {
-                    SettingRow(title: "Weight Unit", value: weightUnit == "kg" ? "Kilograms (kg)" : "Pounds (lb)")
                 }
             }
 
@@ -182,23 +189,4 @@ struct SettingsView: View {
         return Image(systemName: "circle.fill")
     }
 
-}
-
-/// A settings row whose value and chevron use the accent color and update live with it.
-private struct SettingRow: View {
-    @Environment(\.appAccentColor) private var accent
-    let title: String
-    let value: String
-
-    var body: some View {
-        HStack {
-            Text(title).foregroundStyle(.primary)
-            Spacer()
-            Text(value).foregroundStyle(accent)
-            Image(systemName: "chevron.up.chevron.down")
-                .font(.caption2)
-                .foregroundStyle(accent)
-        }
-        .contentShape(Rectangle())
-    }
 }
