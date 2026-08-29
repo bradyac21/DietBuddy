@@ -72,6 +72,7 @@
 		D4DB76F9304219680050C594 /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB76F8304219680050C594 /* ShakeEffect.swift */; };
 		D4DB770630422EEA0050C594 /* LabeledDecimalField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB770530422EEA0050C594 /* LabeledDecimalField.swift */; };
 		D4DB770830422EEB0050C594 /* MacroValueRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB770730422EEB0050C594 /* MacroValueRow.swift */; };
+		D4DB7725304260540050C594 /* FoodIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7724304260540050C594 /* FoodIndexView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +165,7 @@
 		D4DB76F8304219680050C594 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 		D4DB770530422EEA0050C594 /* LabeledDecimalField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledDecimalField.swift; sourceTree = "<group>"; };
 		D4DB770730422EEB0050C594 /* MacroValueRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroValueRow.swift; sourceTree = "<group>"; };
+		D4DB7724304260540050C594 /* FoodIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodIndexView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -406,6 +408,7 @@
 				D4DB76F6304218640050C594 /* HistoryCalendarView.swift */,
 				D4DB76F4304218510050C594 /* DayFoodView.swift */,
 				D4DB76F2304218420050C594 /* MealSummaryDisclosure.swift */,
+				D4DB7724304260540050C594 /* FoodIndexView.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				D403F02A303E93AE00140095 /* MealMainView.swift in Sources */,
 				D403F05E303E94F600140095 /* NavigationBarAccent.swift in Sources */,
 				D4DB76F5304218510050C594 /* DayFoodView.swift in Sources */,
+				D4DB7725304260540050C594 /* FoodIndexView.swift in Sources */,
 			);
 		};
 		D4DB75F7303FB6430050C594 /* Sources */ = {

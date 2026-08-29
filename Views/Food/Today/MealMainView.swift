@@ -64,11 +64,20 @@ struct MealMainView: View {
                                            onSaveMeal: { savingMeal = $0 },
                                            onUnsaveMeal: { unsaveMeal($0) })
                     }
+                }
 
+                Section {
                     Button {
                         isAddingMeal = true
                     } label: {
-                        Label("Add Meal", systemImage: "plus")
+                        // Center the text in the row and hang the plus just to its left,
+                        // so the label reads as centered (a plain Label centers the whole group).
+                        Text("Add Meal")
+                            .overlay(alignment: .leading) {
+                                Image(systemName: "plus")
+                                    .alignmentGuide(.leading) { $0[.trailing] + 6 }
+                            }
+                            .frame(maxWidth: .infinity, alignment: .center)
                             .foregroundStyle(accent)
                     }
                 }
@@ -100,6 +109,11 @@ struct MealMainView: View {
                     MealHistoryView()
                 } label: {
                     Label("Tracking History", systemImage: "clock.arrow.circlepath")
+                }
+                NavigationLink {
+                    FoodIndexView()
+                } label: {
+                    Label("Food Index", systemImage: "text.book.closed")
                 }
             }
         }
