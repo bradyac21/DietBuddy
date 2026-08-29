@@ -28,7 +28,7 @@ struct MealHistoryView: View {
         Group {
             switch mode {
             case .list:
-                listView
+                HistoryDayList(days: days)
             case .calendar:
                 HistoryCalendarView(daysWithData: daysWithData)
             }
@@ -47,7 +47,13 @@ struct MealHistoryView: View {
         }
     }
 
-    private var listView: some View {
+}
+
+/// The scrollable day-by-day history feed.
+private struct HistoryDayList: View {
+    let days: [(date: Date, meals: [Meal])]
+
+    var body: some View {
         List {
             if days.isEmpty {
                 EmptyStateView(title: "No History",

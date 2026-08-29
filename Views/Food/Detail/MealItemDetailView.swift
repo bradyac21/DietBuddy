@@ -48,23 +48,23 @@ struct MealItemDetailView: View {
             }
 
             Section("Portion") {
-                macroField("Grams", text: $gramsText)
+                LabeledDecimalField(label: "Grams", text: $gramsText)
             }
 
             if item.hasNutritionData {
                 // Derived from the per-100g basis, so it updates as the serving size changes.
                 Section("Nutrition (this serving)") {
-                    servingRow("Calories", item.caloriesPer100g * factor, "kcal")
-                    servingRow("Protein", item.proteinPer100g * factor, "g")
-                    servingRow("Carbs", item.carbsPer100g * factor, "g")
-                    servingRow("Fat", item.fatPer100g * factor, "g")
+                    MacroValueRow(label: "Calories", value: item.caloriesPer100g * factor, unit: "kcal")
+                    MacroValueRow(label: "Protein", value: item.proteinPer100g * factor, unit: "g")
+                    MacroValueRow(label: "Carbs", value: item.carbsPer100g * factor, unit: "g")
+                    MacroValueRow(label: "Fat", value: item.fatPer100g * factor, unit: "g")
                 }
             } else {
                 Section {
-                    macroField("Calories (kcal)", text: $caloriesText)
-                    macroField("Protein (g)", text: $proteinText)
-                    macroField("Carbs (g)", text: $carbsText)
-                    macroField("Fat (g)", text: $fatText)
+                    LabeledDecimalField(label: "Calories (kcal)", text: $caloriesText)
+                    LabeledDecimalField(label: "Protein (g)", text: $proteinText)
+                    LabeledDecimalField(label: "Carbs (g)", text: $carbsText)
+                    LabeledDecimalField(label: "Fat (g)", text: $fatText)
                 } header: {
                     Text("Nutrition (this serving)")
                 } footer: {
@@ -84,20 +84,6 @@ struct MealItemDetailView: View {
                     .disabled(!canSave)
             }
         }
-    }
-
-    private func macroField(_ label: String, text: Binding<String>) -> some View {
-        HStack {
-            Text(label)
-            Spacer()
-            TextField(label, text: text)
-                .keyboardType(.decimalPad)
-                .multilineTextAlignment(.trailing)
-        }
-    }
-
-    private func servingRow(_ label: String, _ value: Double, _ unit: String) -> some View {
-        LabeledContent(label, value: "\(value.formatted(.number.precision(.fractionLength(0...1)))) \(unit)")
     }
 
     private static func numberString(_ value: Double) -> String {
