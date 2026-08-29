@@ -13,6 +13,10 @@ final class Food {
     var fatPer100g: Double
     /// Whether the user/database actually supplied nutrition facts (false for name-only manual entries).
     var hasNutritionData: Bool
+    /// When this food was most recently logged, used to surface recently-used foods.
+    var lastLoggedAt: Date?
+    /// How many times this food has been logged.
+    var timesLogged: Int
 
     init(id: UUID = UUID(),
          name: String,
@@ -21,7 +25,9 @@ final class Food {
          proteinPer100g: Double,
          carbsPer100g: Double,
          fatPer100g: Double,
-         hasNutritionData: Bool = true) {
+         hasNutritionData: Bool = true,
+         lastLoggedAt: Date? = nil,
+         timesLogged: Int = 0) {
         self.id = id
         self.name = name
         self.brand = brand
@@ -30,5 +36,13 @@ final class Food {
         self.carbsPer100g = carbsPer100g
         self.fatPer100g = fatPer100g
         self.hasNutritionData = hasNutritionData
+        self.lastLoggedAt = lastLoggedAt
+        self.timesLogged = timesLogged
+    }
+
+    /// Marks the food as logged now, bumping its recency and count.
+    func recordLogged() {
+        lastLoggedAt = .now
+        timesLogged += 1
     }
 }

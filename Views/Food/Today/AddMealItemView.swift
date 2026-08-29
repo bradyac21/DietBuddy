@@ -13,6 +13,12 @@ struct AddMealItemView: View {
     /// Called with the chosen food and portion size (grams) when the user confirms.
     var onSave: (Food, Double) -> Void
 
+    /// Previously logged foods, most recently logged first.
+    private var recentlyLogged: [Food] {
+        foods.filter { $0.lastLoggedAt != nil }
+             .sorted { ($0.lastLoggedAt ?? .distantPast) > ($1.lastLoggedAt ?? .distantPast) }
+    }
+
     var body: some View {
         NavigationStack {
             List {
@@ -33,19 +39,9 @@ struct AddMealItemView: View {
                     Text("Scan a packaged item's barcode, or enter nutrition by hand for restaurant meals where posted facts are unreliable.")
                 }
 
-                Section {
-                    NavigationLink {
-                        SavedMealsPickerView { saved in
-                            commitSavedMeal(saved)
-                        }
-                    } label: {
-                        Label("Saved Meals", systemImage: "bookmark")
-                    }
-                }
-
-                if !foods.isEmpty {
-                    Section("From Library") {
-                        ForEach(foods) { food in
+                if !recentlyLogged.isEmpty {
+                    Section("Previously Logged") {
+                        ForEach(Array(recentlyLogged.prefix(10))) { food in
                             NavigationLink {
                                 FoodEntryForm(title: food.name,
                                               mode: .library,
@@ -53,14 +49,25 @@ struct AddMealItemView: View {
                                               existingFood: food,
                                               onCommit: commit)
                             } label: {
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text(food.name)
-                                    Text("\(food.caloriesPer100g, format: .number.precision(.fractionLength(0))) kcal / 100 g")
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                }
+                                FoodLibraryRow(food: food)
                             }
                         }
+
+                        NavigationLink {
+                            FoodLibraryListView(onCommit: commit)
+                        } label: {
+                            Label("View All", systemImage: "list.bullet")
+                        }
+                    }
+                }
+
+                Section {
+                    NavigationLink {
+                        SavedMealsPickerView { saved in
+                            commitSavedMeal(saved)
+                        }
+                    } label: {
+                        Label("Saved Meals", systemImage: "bookmark")
                     }
                 }
             }

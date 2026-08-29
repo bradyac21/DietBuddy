@@ -73,6 +73,8 @@
 		D4DB770630422EEA0050C594 /* LabeledDecimalField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB770530422EEA0050C594 /* LabeledDecimalField.swift */; };
 		D4DB770830422EEB0050C594 /* MacroValueRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB770730422EEB0050C594 /* MacroValueRow.swift */; };
 		D4DB7725304260540050C594 /* FoodIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7724304260540050C594 /* FoodIndexView.swift */; };
+		D4DB773630434A230050C594 /* FoodLibraryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB773530434A230050C594 /* FoodLibraryRow.swift */; };
+		D4DB773830434A350050C594 /* FoodLibraryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB773730434A350050C594 /* FoodLibraryListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +168,8 @@
 		D4DB770530422EEA0050C594 /* LabeledDecimalField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledDecimalField.swift; sourceTree = "<group>"; };
 		D4DB770730422EEB0050C594 /* MacroValueRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroValueRow.swift; sourceTree = "<group>"; };
 		D4DB7724304260540050C594 /* FoodIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodIndexView.swift; sourceTree = "<group>"; };
+		D4DB773530434A230050C594 /* FoodLibraryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLibraryRow.swift; sourceTree = "<group>"; };
+		D4DB773730434A350050C594 /* FoodLibraryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLibraryListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -320,6 +324,7 @@
 				D4DB770B304244DA0050C594 /* Entry */,
 				D4DB770C304244DA0050C594 /* History */,
 				D4DB770D304244DB0050C594 /* Detail */,
+				D4DB773530434A230050C594 /* FoodLibraryRow.swift */,
 			);
 			path = Food;
 			sourceTree = "<group>";
@@ -397,6 +402,7 @@
 				D403F025303E932300140095 /* ScanFoodView.swift */,
 				D403F003303C8C6900140095 /* BarcodeScannerView.swift */,
 				D4DB75F3303F1AD90050C594 /* ManualBarcodeEntryView.swift */,
+				D4DB773730434A350050C594 /* FoodLibraryListView.swift */,
 			);
 			path = Entry;
 			sourceTree = "<group>";
@@ -524,6 +530,7 @@
 				D403F052303E94AB00140095 /* SavedMealsManagerView.swift in Sources */,
 				D403F024303E931A00140095 /* AddMealItemView.swift in Sources */,
 				D403F02C303E93C000140095 /* MealDisclosureView.swift in Sources */,
+				D4DB773630434A230050C594 /* FoodLibraryRow.swift in Sources */,
 				D403F044303E946000140095 /* WeightHistoryView.swift in Sources */,
 				D403F03A303E940100140095 /* SaveMealSheet.swift in Sources */,
 				D403F058303E94D900140095 /* AccountSettingsView.swift in Sources */,
@@ -553,6 +560,7 @@
 				D403F00C303CD44F00140095 /* AddMealView.swift in Sources */,
 				D403F028303E934100140095 /* FoodEntryForm.swift in Sources */,
 				D403F03C303E944E00140095 /* WeightView.swift in Sources */,
+				D4DB773830434A350050C594 /* FoodLibraryListView.swift in Sources */,
 				D403F020303E92FA00140095 /* SavedMealItem.swift in Sources */,
 				D403F060303E94F800140095 /* EmptyStateView.swift in Sources */,
 				D403F00A303CD44300140095 /* Meal.swift in Sources */,
