@@ -30,6 +30,7 @@ struct WeightView: View {
     @Query private var profiles: [UserProfile]
     @Query private var meals: [Meal]
     @AppStorage("weightUnit") private var weightUnit: String = "lb"
+    @AppStorage("showBMI") private var showBMI = true
 
     @State private var period: WeightPeriod = .threeMonths
     @State private var editingEntry: WeightEntry?
@@ -96,7 +97,7 @@ struct WeightView: View {
                     WeightChangeSummaryView(change: change, unit: weightUnit, period: period.rawValue)
                 }
 
-                if let bmi {
+                if showBMI, let bmi {
                     HStack {
                         Text("BMI")
                         Button {
