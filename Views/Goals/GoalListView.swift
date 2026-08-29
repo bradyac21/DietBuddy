@@ -17,7 +17,7 @@ struct GoalListView: View {
             } else {
                 ForEach(goals) { goal in
                     NavigationLink {
-                        GoalEditor(goal: goal)
+                        GoalDetailView(goal: goal)
                     } label: {
                         VStack(alignment: .leading, spacing: 4) {
                             HStack(spacing: 6) {
