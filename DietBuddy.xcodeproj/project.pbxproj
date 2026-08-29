@@ -75,6 +75,8 @@
 		D4DB7725304260540050C594 /* FoodIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7724304260540050C594 /* FoodIndexView.swift */; };
 		D4DB773630434A230050C594 /* FoodLibraryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB773530434A230050C594 /* FoodLibraryRow.swift */; };
 		D4DB773830434A350050C594 /* FoodLibraryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB773730434A350050C594 /* FoodLibraryListView.swift */; };
+		D4DB7776304354960050C594 /* MacroSplit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7775304354960050C594 /* MacroSplit.swift */; };
+		D4DB777830439AFE0050C594 /* GoalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB777730439AFE0050C594 /* GoalDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +172,8 @@
 		D4DB7724304260540050C594 /* FoodIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodIndexView.swift; sourceTree = "<group>"; };
 		D4DB773530434A230050C594 /* FoodLibraryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLibraryRow.swift; sourceTree = "<group>"; };
 		D4DB773730434A350050C594 /* FoodLibraryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLibraryListView.swift; sourceTree = "<group>"; };
+		D4DB7775304354960050C594 /* MacroSplit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroSplit.swift; sourceTree = "<group>"; };
+		D4DB777730439AFE0050C594 /* GoalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -274,6 +278,7 @@
 				D403F05D303E94F600140095 /* NavigationBarAccent.swift */,
 				D4DB7619303FB7900050C594 /* DaySnapshot.swift */,
 				D4DB76213040CE6F0050C594 /* BMICalculator.swift */,
+				D4DB7775304354960050C594 /* MacroSplit.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -334,6 +339,7 @@
 			children = (
 				D403F047303E948200140095 /* GoalListView.swift */,
 				D403F049303E948D00140095 /* GoalEditor.swift */,
+				D4DB777730439AFE0050C594 /* GoalDetailView.swift */,
 			);
 			path = Goals;
 			sourceTree = "<group>";
@@ -563,10 +569,12 @@
 				D4DB773830434A350050C594 /* FoodLibraryListView.swift in Sources */,
 				D403F020303E92FA00140095 /* SavedMealItem.swift in Sources */,
 				D403F060303E94F800140095 /* EmptyStateView.swift in Sources */,
+				D4DB777830439AFE0050C594 /* GoalDetailView.swift in Sources */,
 				D403F00A303CD44300140095 /* Meal.swift in Sources */,
 				D403F01E303E92F200140095 /* SavedMeal.swift in Sources */,
 				D403F034303E93E700140095 /* MealItemDetailView.swift in Sources */,
 				D403F05C303E94EF00140095 /* Theme.swift in Sources */,
+				D4DB7776304354960050C594 /* MacroSplit.swift in Sources */,
 				D403F046303E946700140095 /* WeightEntryEditor.swift in Sources */,
 				D403F068303E95D700140095 /* RootTabView.swift in Sources */,
 				D403F004303C8C6900140095 /* BarcodeScannerView.swift in Sources */,
