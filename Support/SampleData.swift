@@ -43,6 +43,14 @@ enum SampleData {
             context.insert(food)
         }
 
+        // Give the seeded foods staggered "last logged" times and counts so the
+        // Previously Logged list has realistic data to show.
+        let loggedFoods = [chicken, rice, broccoli, banana, oats, peanutButter, whey, salmon, egg, almonds, greekYogurt]
+        for (index, food) in loggedFoods.enumerated() {
+            food.lastLoggedAt = calendar.date(byAdding: .hour, value: -index * 7, to: .now)
+            food.timesLogged = loggedFoods.count - index
+        }
+
         // Weight history (~90 days, gentle downward trend with noise)
         let startWeight = 190.0
         for dayOffset in stride(from: 90, through: 0, by: -3) {

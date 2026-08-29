@@ -152,6 +152,7 @@ struct MealMainView: View {
                 let item = MealItem(food: food, grams: grams)
                 context.insert(item)
                 meal.items.append(item)
+                food.recordLogged()
             }
         }
         .sheet(item: $savingMeal) { meal in
