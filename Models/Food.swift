@@ -17,6 +17,8 @@ final class Food {
     var lastLoggedAt: Date?
     /// How many times this food has been logged.
     var timesLogged: Int
+    /// True for drinks, so logging defaults to a volume portion (fl oz).
+    var isBeverage: Bool
 
     init(id: UUID = UUID(),
          name: String,
@@ -27,7 +29,8 @@ final class Food {
          fatPer100g: Double,
          hasNutritionData: Bool = true,
          lastLoggedAt: Date? = nil,
-         timesLogged: Int = 0) {
+         timesLogged: Int = 0,
+         isBeverage: Bool = false) {
         self.id = id
         self.name = name
         self.brand = brand
@@ -38,6 +41,7 @@ final class Food {
         self.hasNutritionData = hasNutritionData
         self.lastLoggedAt = lastLoggedAt
         self.timesLogged = timesLogged
+        self.isBeverage = isBeverage
     }
 
     /// Marks the food as logged now, bumping its recency and count.
