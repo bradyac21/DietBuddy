@@ -8,6 +8,8 @@ struct FoodLookupResult {
     var proteinPer100g: Double
     var carbsPer100g: Double
     var fatPer100g: Double
+    /// True when Open Food Facts categorizes the product as a drink.
+    var isBeverage: Bool
 }
 
 enum FoodLookupError: LocalizedError {
@@ -28,7 +30,7 @@ enum FoodLookupError: LocalizedError {
 struct OpenFoodFactsService {
     func lookup(barcode: String) async throws -> FoodLookupResult {
         let trimmed = barcode.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard let url = URL(string: "https://world.openfoodfacts.org/api/v2/product/\(trimmed).json?fields=product_name,brands,nutriments") else {
+        guard let url = URL(string: "https://world.openfoodfacts.org/api/v2/product/\(trimmed).json?fields=product_name,brands,nutriments,categories_tags") else {
             throw FoodLookupError.invalidResponse
         }
 
@@ -54,13 +56,16 @@ struct OpenFoodFactsService {
         }
 
         let name = (product.productName?.isEmpty == false) ? product.productName! : "Scanned Item"
+        let categories = product.categoriesTags ?? []
+        let isBeverage = categories.contains { $0.contains("beverage") || $0.contains("drink") }
         return FoodLookupResult(
             name: name,
             brand: product.brands?.isEmpty == false ? product.brands : nil,
             caloriesPer100g: product.nutriments?.energyKcal100g ?? 0,
             proteinPer100g: product.nutriments?.proteins100g ?? 0,
             carbsPer100g: product.nutriments?.carbohydrates100g ?? 0,
-            fatPer100g: product.nutriments?.fat100g ?? 0
+            fatPer100g: product.nutriments?.fat100g ?? 0,
+            isBeverage: isBeverage
         )
     }
 }
@@ -76,11 +81,13 @@ private struct OFFProduct: Decodable {
     let productName: String?
     let brands: String?
     let nutriments: OFFNutriments?
+    let categoriesTags: [String]?
 
     enum CodingKeys: String, CodingKey {
         case productName = "product_name"
         case brands
         case nutriments
+        case categoriesTags = "categories_tags"
     }
 }
 

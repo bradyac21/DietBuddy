@@ -9,6 +9,8 @@ struct FoodDraft {
     var protein: Double?
     var carbs: Double?
     var fat: Double?
+    /// True for drinks, so the portion defaults to a volume unit.
+    var isBeverage: Bool = false
 }
 
 extension FoodDraft {
@@ -19,6 +21,7 @@ extension FoodDraft {
         protein = food.proteinPer100g
         carbs = food.carbsPer100g
         fat = food.fatPer100g
+        isBeverage = food.isBeverage
     }
 
     init(from result: FoodLookupResult) {
@@ -28,6 +31,7 @@ extension FoodDraft {
         protein = result.proteinPer100g
         carbs = result.carbsPer100g
         fat = result.fatPer100g
+        isBeverage = result.isBeverage
     }
 }
 
@@ -64,7 +68,8 @@ struct FoodEntryForm: View {
     private let scannedDraft: FoodDraft
 
     @State private var amountText: String = ""
-    @State private var unit: PortionUnit = .grams
+    @State private var unit: PortionUnit
+    @State private var isBeverage: Bool
 
     init(title: String,
          mode: FoodEntryMode,
@@ -80,14 +85,32 @@ struct FoodEntryForm: View {
         self.scannedDraft = draft
         _name = State(initialValue: draft.name)
         _brand = State(initialValue: draft.brand)
-        _caloriesText = State(initialValue: Self.numberString(draft.calories))
-        _proteinText = State(initialValue: Self.numberString(draft.protein))
-        _carbsText = State(initialValue: Self.numberString(draft.carbs))
-        _fatText = State(initialValue: Self.numberString(draft.fat))
+        // Editable fields show values in the display basis (per fl oz for drinks).
+        let basisGrams = draft.isBeverage ? Self.gramsPerFluidOunce : 100
+        _caloriesText = State(initialValue: Self.numberString(draft.calories.map { $0 * basisGrams / 100 }))
+        _proteinText = State(initialValue: Self.numberString(draft.protein.map { $0 * basisGrams / 100 }))
+        _carbsText = State(initialValue: Self.numberString(draft.carbs.map { $0 * basisGrams / 100 }))
+        _fatText = State(initialValue: Self.numberString(draft.fat.map { $0 * basisGrams / 100 }))
+        // Beverages default to a volume unit (fl oz); everything else to grams.
+        _unit = State(initialValue: draft.isBeverage ? .fluidOunces : .grams)
+        _isBeverage = State(initialValue: draft.isBeverage)
     }
 
     private var isReadOnly: Bool { mode == .scanned }
     private var portionRequired: Bool { mode != .manual }
+
+    /// Grams in one unit of the nutrition basis: per fl oz for drinks, per 100 g for food.
+    private static let gramsPerFluidOunce = 29.5735295625
+    private var nutritionBasisGrams: Double { isBeverage ? Self.gramsPerFluidOunce : 100 }
+
+    /// Drinks measure by volume (fl oz / mL, nutrition per fl oz); foods by weight (g / oz, per 100 g).
+    private var unitOptions: [PortionUnit] { isBeverage ? [.fluidOunces, .milliliters] : [.grams, .ounces] }
+    private var basisLabel: String { isBeverage ? "per fl oz" : "per 100 g" }
+
+    /// Converts a stored per-100g value into the current display basis.
+    private func inBasis(_ per100: Double?) -> Double? {
+        per100.map { $0 * nutritionBasisGrams / 100 }
+    }
 
     private var amount: Double? { Double(amountText) }
     private var grams: Double { unit.toGrams(amount ?? 0) }
@@ -96,7 +119,9 @@ struct FoodEntryForm: View {
         isReadOnly ? scannedDraft.name : name.trimmingCharacters(in: .whitespaces)
     }
     private var resolvedCalories: Double {
-        isReadOnly ? (scannedDraft.calories ?? 0) : (Double(caloriesText) ?? 0)
+        // Always a per-100g value, for portion math.
+        if isReadOnly { return scannedDraft.calories ?? 0 }
+        return (Double(caloriesText) ?? 0) * 100 / nutritionBasisGrams
     }
     private var portionCalories: Double { resolvedCalories * grams / 100 }
 
@@ -114,7 +139,18 @@ struct FoodEntryForm: View {
                 }
             }
 
-            Section("Food") {
+            Section {
+                Picker("Type", selection: $isBeverage) {
+                    Text("Food").tag(false)
+                    Text("Drink").tag(true)
+                }
+                .pickerStyle(.segmented)
+                .onChange(of: isBeverage) { _, drink in
+                    unit = drink ? .fluidOunces : .grams
+                }
+            }
+
+            Section("Details") {
                 if isReadOnly {
                     LabeledContent("Name", value: scannedDraft.name)
                     if !scannedDraft.brand.isEmpty {
@@ -128,10 +164,10 @@ struct FoodEntryForm: View {
 
             Section {
                 if isReadOnly {
-                    MacroValueRow(label: "Calories", value: scannedDraft.calories, unit: "kcal")
-                    MacroValueRow(label: "Protein", value: scannedDraft.protein, unit: "g")
-                    MacroValueRow(label: "Carbs", value: scannedDraft.carbs, unit: "g")
-                    MacroValueRow(label: "Fat", value: scannedDraft.fat, unit: "g")
+                    MacroValueRow(label: "Calories", value: inBasis(scannedDraft.calories), unit: "kcal")
+                    MacroValueRow(label: "Protein", value: inBasis(scannedDraft.protein), unit: "g")
+                    MacroValueRow(label: "Carbs", value: inBasis(scannedDraft.carbs), unit: "g")
+                    MacroValueRow(label: "Fat", value: inBasis(scannedDraft.fat), unit: "g")
                 } else {
                     LabeledDecimalField(label: "Calories (kcal)", text: $caloriesText)
                     LabeledDecimalField(label: "Protein (g)", text: $proteinText)
@@ -139,7 +175,7 @@ struct FoodEntryForm: View {
                     LabeledDecimalField(label: "Fat (g)", text: $fatText)
                 }
             } header: {
-                Text("Nutrition (per 100 g)")
+                Text("Nutrition (\(basisLabel))")
             } footer: {
                 if mode == .manual {
                     Text("Only a name is required. Nutrition and portion are optional.")
@@ -147,15 +183,14 @@ struct FoodEntryForm: View {
             }
 
             Section("Portion") {
-                HStack {
-                    TextField("Amount", text: $amountText)
-                        .keyboardType(.decimalPad)
-                    Picker("Unit", selection: $unit) {
-                        ForEach(PortionUnit.allCases) { Text($0.rawValue).tag($0) }
-                    }
-                    .pickerStyle(.segmented)
-                    .fixedSize()
+                TextField("Amount", text: $amountText)
+                    .keyboardType(.decimalPad)
+
+                Picker("Unit", selection: $unit) {
+                    ForEach(unitOptions) { Text($0.rawValue).tag($0) }
                 }
+                .pickerStyle(.segmented)
+
                 if amount != nil {
                     LabeledContent("In this portion",
                                    value: "\(portionCalories.formatted(.number.precision(.fractionLength(0)))) kcal")
@@ -188,11 +223,12 @@ struct FoodEntryForm: View {
         if let existingFood {
             existingFood.name = resolvedName
             existingFood.brand = brandValue.isEmpty ? nil : brandValue
-            existingFood.caloriesPer100g = Double(caloriesText) ?? 0
-            existingFood.proteinPer100g = Double(proteinText) ?? 0
-            existingFood.carbsPer100g = Double(carbsText) ?? 0
-            existingFood.fatPer100g = Double(fatText) ?? 0
+            existingFood.caloriesPer100g = (Double(caloriesText) ?? 0) * 100 / nutritionBasisGrams
+            existingFood.proteinPer100g = (Double(proteinText) ?? 0) * 100 / nutritionBasisGrams
+            existingFood.carbsPer100g = (Double(carbsText) ?? 0) * 100 / nutritionBasisGrams
+            existingFood.fatPer100g = (Double(fatText) ?? 0) * 100 / nutritionBasisGrams
             existingFood.hasNutritionData = nutritionProvided
+            existingFood.isBeverage = isBeverage
             food = existingFood
         } else if isReadOnly {
             // Scanned data always counts as supplied nutrition facts.
@@ -202,16 +238,18 @@ struct FoodEntryForm: View {
                         proteinPer100g: scannedDraft.protein ?? 0,
                         carbsPer100g: scannedDraft.carbs ?? 0,
                         fatPer100g: scannedDraft.fat ?? 0,
-                        hasNutritionData: true)
+                        hasNutritionData: true,
+                        isBeverage: isBeverage)
             context.insert(food)
         } else {
             food = Food(name: resolvedName,
                         brand: brandValue.isEmpty ? nil : brandValue,
-                        caloriesPer100g: Double(caloriesText) ?? 0,
-                        proteinPer100g: Double(proteinText) ?? 0,
-                        carbsPer100g: Double(carbsText) ?? 0,
-                        fatPer100g: Double(fatText) ?? 0,
-                        hasNutritionData: nutritionProvided)
+                        caloriesPer100g: (Double(caloriesText) ?? 0) * 100 / nutritionBasisGrams,
+                        proteinPer100g: (Double(proteinText) ?? 0) * 100 / nutritionBasisGrams,
+                        carbsPer100g: (Double(carbsText) ?? 0) * 100 / nutritionBasisGrams,
+                        fatPer100g: (Double(fatText) ?? 0) * 100 / nutritionBasisGrams,
+                        hasNutritionData: nutritionProvided,
+                        isBeverage: isBeverage)
             context.insert(food)
         }
         onCommit(food, grams)
