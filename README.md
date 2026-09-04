@@ -48,13 +48,13 @@ not a single line of code, not even this README.
 | --- | --- | --- |
 | ![Food tab](Screenshots/food.png) | ![Add food](Screenshots/add-food.png) | ![Weight tab](Screenshots/weight.png) |
 
-| History Calendar | Food Index | Settings |
+| History Calendar | Food Index | Goal Editor |
 | --- | --- | --- |
-| ![History calendar](Screenshots/history-calendar.png) | ![Food index](Screenshots/food-index.png) | ![Settings](Screenshots/settings.png) |
+| ![History calendar](Screenshots/history-calendar.png) | ![Food index](Screenshots/food-index.png) | ![Goal editor](Screenshots/goal-editor.png) |
 
-| Onboarding |
-| --- |
-| ![Onboarding](Screenshots/onboarding.png) |
+| Onboarding | Settings |
+| --- | --- |
+| ![Onboarding](Screenshots/onboarding.png) | ![Settings](Screenshots/settings.png) |
 
 ## Requirements
 

@@ -7,11 +7,9 @@ Add PNG screenshots here for the README's Screenshots section. Expected filename
 - `weight.png` — Weight tab (trend chart + BMI)
 - `history-calendar.png` — Tracking history in month-calendar mode
 - `food-index.png` — Food Index (unique logged foods with averages/totals)
+- `goal-editor.png` — Goal editor (calorie split or macros)
 - `onboarding.png` — First-run onboarding
 - `settings.png` — Settings (with the storage/reset section)
-
-Not yet captured: `goal-editor.png` (goal editor). Add it and reference it in the
-README if you'd like it included.
 
 Suggested: capture on an iPhone simulator at a consistent device size (e.g. iPhone 16 Pro),
 portrait, in light or dark mode consistently.
