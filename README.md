@@ -18,16 +18,43 @@ not a single line of code, not even this README.
 
 ## Features
 
-- **Weight tracking** — log weigh-ins, see a trend chart over an adjustable period, and
-  browse/edit full history.
 - **Food logging** — build up a day from user-created meals (Breakfast, Lunch, or numbered),
   with macro progress rings that fill toward your goal and shift red → green → purple.
 - **Adding food** — scan a barcode (looked up via Open Food Facts) or enter nutrition by
-  hand; portions in grams or ounces.
+  hand. Foods are measured by weight (g / oz, per 100 g); drinks are detected automatically
+  and measured by volume (fl oz / mL, per fl oz).
+- **Previously logged foods** — quickly re-log anything you've had before, searchable and
+  sortable, so routine items don't need re-scanning.
 - **Saved meals** — save a logged meal and re-add it later as a single collapsible bundle.
+- **Tracking history** — browse past days as a scrollable feed or a month calendar, drill
+  into any day, and see a **Food Index** of every food you've logged with averages and totals.
+- **Weight tracking** — log weigh-ins, see a trend chart over an adjustable period (with an
+  optional calorie-intake overlay), view BMI (which can be turned off), and edit full history.
 - **Goals** — keep multiple nutrition goals with one "active" goal driving the day's targets.
-- **Account & settings** — a local account with light/dark/system appearance, an accent
-  color, and unit preference.
+  Set them by macros or by a calorie target split across presets (Balanced, High Protein,
+  Low Carb, Low Fat) or a custom P/C/F ratio.
+- **Home-screen widget** — daily macro totals at a glance via WidgetKit + an App Group.
+- **Reminders** — optional local check-in notifications.
+- **Onboarding** — a three-phase first-run intro that also captures optional profile details.
+- **Settings** — light/dark/system appearance, accent color, unit preference, a storage
+  summary, and a reset-all-data option.
+
+### Screenshots
+
+> Images live in [`Screenshots/`](Screenshots/). Drop PNGs with the names below in that
+> folder and they'll render here.
+
+| Food (Today) | Add Food | Weight & BMI |
+| --- | --- | --- |
+| ![Food tab](Screenshots/food.png) | ![Add food](Screenshots/add-food.png) | ![Weight tab](Screenshots/weight.png) |
+
+| History Calendar | Food Index | Settings |
+| --- | --- | --- |
+| ![History calendar](Screenshots/history-calendar.png) | ![Food index](Screenshots/food-index.png) | ![Settings](Screenshots/settings.png) |
+
+| Onboarding |
+| --- |
+| ![Onboarding](Screenshots/onboarding.png) |
 
 ## Requirements
 
@@ -38,17 +65,30 @@ not a single line of code, not even this README.
 
 ```
 DietBuddy/
-├── App/         # App entry point and root tab view
-├── Models/      # SwiftData models (Food, Meal, WeightEntry, Goal, SavedMeal, …)
-├── Services/    # Networking / lookup (Open Food Facts)
-├── Support/     # Theme, reusable views, DEBUG sample data
-└── Views/       # Feature screens: Weight, Food, Goals, SavedMeals, Account
+├── App/            # App entry point, root tab view, onboarding
+├── Models/         # SwiftData models (Food, Meal, MealItem, WeightEntry, Goal,
+│                   #   SavedMeal, SavedMealItem, UserProfile, PortionUnit, Gender)
+├── Services/       # Open Food Facts lookup, reminder scheduling
+├── Support/        # Theme, BMI + macro math, DEBUG sample data, shared widget store
+├── Views/
+│   ├── Weight/     # Trend chart, history, BMI, weigh-in editor
+│   ├── Food/
+│   │   ├── Today/    # The day's meals and adding meals/items
+│   │   ├── Entry/    # Barcode scan, manual entry, food library
+│   │   ├── History/  # List/calendar history, per-day view, food index
+│   │   └── Detail/   # Item and saved-meal-bundle detail
+│   ├── Goals/      # Goal list, editor, and read-only detail
+│   ├── SavedMeals/ # Saved-meal management and picking
+│   ├── Settings/   # Settings and profile/body editor
+│   └── Components/  # Reusable views (buttons, fields, pickers, effects, empty state)
+└── DietBuddyWidget/ # WidgetKit extension (daily macros)
 ```
 
 ## Notes
 
 - Nutrition for logged items is **snapshotted** at log time, so editing the Food library
   later never changes past entries.
+- Nutrition is stored per 100 g internally; drinks display/enter per fl oz (≈ 1 g/mL).
 - Sample data is seeded only in **DEBUG** builds and never ships in release.
 - To run on a physical device you'll need to set your own bundle identifier and signing team.
 
