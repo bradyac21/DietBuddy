@@ -32,12 +32,18 @@ not a single line of code, not even this README.
   optional calorie-intake overlay), view BMI (which can be turned off), and edit full history.
 - **Goals** — keep multiple nutrition goals with one "active" goal driving the day's targets.
   Set them by macros or by a calorie target split across presets (Balanced, High Protein,
-  Low Carb, Low Fat) or a custom P/C/F ratio.
+  Low Carb, Low Fat) or a custom P/C/F ratio — calories and macros always stay consistent.
+  Tap a goal to view it, then Edit to make changes.
+- **Apple Health** — opt in to sync weigh-ins and logged nutrition to Health, import your
+  profile (birthday, sex, height) and past weigh-ins, and see today's step count on the
+  Weight tab.
 - **Home-screen widget** — daily macro totals at a glance via WidgetKit + an App Group.
 - **Reminders** — optional local check-in notifications.
-- **Onboarding** — a three-phase first-run intro that also captures optional profile details.
-- **Settings** — light/dark/system appearance, accent color, unit preference, a storage
-  summary, and a reset-all-data option.
+- **Onboarding** — a three-phase first-run intro that captures optional profile details (or
+  imports them from Apple Health) and lets you choose an accent color.
+- **Settings** — organized into categories (Profile, Appearance, Health, Saved Meals,
+  Reminders, Data, About): appearance/accent/units, BMI + Apple Health sync, reminders, a
+  storage summary with reset-all-data, and app info.
 
 ### Screenshots
 
@@ -52,9 +58,9 @@ not a single line of code, not even this README.
 | --- | --- | --- |
 | ![History calendar](Screenshots/history-calendar.png) | ![Food index](Screenshots/food-index.png) | ![Goal editor](Screenshots/goal-editor.png) |
 
-| Onboarding | Settings |
-| --- | --- |
-| ![Onboarding](Screenshots/onboarding.png) | ![Settings](Screenshots/settings.png) |
+| Onboarding | Settings | Health |
+| --- | --- | --- |
+| ![Onboarding](Screenshots/onboarding.png) | ![Settings](Screenshots/settings.png) | ![Health settings](Screenshots/health.png) |
 
 ## Requirements
 
@@ -68,7 +74,7 @@ DietBuddy/
 ├── App/            # App entry point, root tab view, onboarding
 ├── Models/         # SwiftData models (Food, Meal, MealItem, WeightEntry, Goal,
 │                   #   SavedMeal, SavedMealItem, UserProfile, PortionUnit, Gender)
-├── Services/       # Open Food Facts lookup, reminder scheduling
+├── Services/       # Open Food Facts lookup, reminder scheduling, Apple Health (HealthKit)
 ├── Support/        # Theme, BMI + macro math, DEBUG sample data, shared widget store
 ├── Views/
 │   ├── Weight/     # Trend chart, history, BMI, weigh-in editor
@@ -79,7 +85,7 @@ DietBuddy/
 │   │   └── Detail/   # Item and saved-meal-bundle detail
 │   ├── Goals/      # Goal list, editor, and read-only detail
 │   ├── SavedMeals/ # Saved-meal management and picking
-│   ├── Settings/   # Settings and profile/body editor
+│   ├── Settings/   # Settings categories (appearance, health, reminders, data, about) + profile
 │   └── Components/  # Reusable views (buttons, fields, pickers, effects, empty state)
 └── DietBuddyWidget/ # WidgetKit extension (daily macros)
 ```
@@ -90,6 +96,8 @@ DietBuddy/
   later never changes past entries.
 - Nutrition is stored per 100 g internally; drinks display/enter per fl oz (≈ 1 g/mL).
 - Sample data is seeded only in **DEBUG** builds and never ships in release.
+- Apple Health sync is **opt-in** and requires the HealthKit capability plus the Health usage
+  strings; without them the app still builds and runs, just without Health features.
 - To run on a physical device you'll need to set your own bundle identifier and signing team.
 
 ## Development
