@@ -105,6 +105,8 @@ private struct AboutYouPhase: View {
     let onContinue: () -> Void
     let onSkip: () -> Void
 
+    @AppStorage("healthSyncEnabled") private var healthSyncEnabled = false
+
     /// The live accent color; applied directly to the gender picker so its value
     /// re-tints when the accent changes (a menu Picker doesn't pick up environment
     /// tint changes on its own).
@@ -129,6 +131,16 @@ private struct AboutYouPhase: View {
                     Text("A little about you")
                 } footer: {
                     Text("Used to personalize your profile and BMI. You can change this anytime in Account.")
+                }
+
+                if HealthKitService.shared.isAvailable {
+                    Section {
+                        Button("Sync with Apple Health") { importFromHealth() }
+                    } header: {
+                        Text("Apple Health")
+                    } footer: {
+                        Text("Turns on syncing and fills your birthday, sex, and height from Apple Health.")
+                    }
                 }
 
                 Section {
@@ -158,6 +170,18 @@ private struct AboutYouPhase: View {
         }
         // Keep the buttons pinned so the keyboard covers them instead of pushing them up.
         .ignoresSafeArea(.keyboard, edges: .bottom)
+    }
+
+    /// Enables Health sync and fills the fields from Apple Health.
+    private func importFromHealth() {
+        Task {
+            await HealthKitService.shared.requestAuthorization()
+            healthSyncEnabled = true
+            let data = await HealthKitService.shared.readProfile()
+            if let birthday = data.birthday { self.birthday = birthday }
+            if let gender = data.gender { self.gender = gender }
+            if let heightCM = data.heightCM, heightCM > 0 { self.heightCM = heightCM }
+        }
     }
 }
 

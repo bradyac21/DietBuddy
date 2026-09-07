@@ -53,6 +53,11 @@
 		D403F066303E95D100140095 /* DietBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F065303E95D100140095 /* DietBuddyApp.swift */; };
 		D403F068303E95D700140095 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F067303E95D700140095 /* RootTabView.swift */; };
 		D404DFCB304E51700011F5A3 /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D404DFCA304E51700011F5A3 /* HealthKitService.swift */; };
+		D404DFEB304E56880011F5A3 /* AppearanceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D404DFEA304E56880011F5A3 /* AppearanceSettingsView.swift */; };
+		D404DFED304E56980011F5A3 /* HealthSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D404DFEC304E56980011F5A3 /* HealthSettingsView.swift */; };
+		D404DFEF304E56A30011F5A3 /* RemindersSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D404DFEE304E56A30011F5A3 /* RemindersSettingsView.swift */; };
+		D404DFF1304E56AE0011F5A3 /* DataSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D404DFF0304E56AE0011F5A3 /* DataSettingsView.swift */; };
+		D404DFF3304E56B90011F5A3 /* AboutSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D404DFF2304E56B90011F5A3 /* AboutSettingsView.swift */; };
 		D4DB75F4303F1AD90050C594 /* ManualBarcodeEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB75F3303F1AD90050C594 /* ManualBarcodeEntryView.swift */; };
 		D4DB75F6303F615F0050C594 /* ReminderScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB75F5303F615F0050C594 /* ReminderScheduler.swift */; };
 		D4DB75FE303FB6430050C594 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DB75FD303FB6430050C594 /* WidgetKit.framework */; };
@@ -150,6 +155,11 @@
 		D403F065303E95D100140095 /* DietBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietBuddyApp.swift; sourceTree = "<group>"; };
 		D403F067303E95D700140095 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		D404DFCA304E51700011F5A3 /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
+		D404DFEA304E56880011F5A3 /* AppearanceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSettingsView.swift; sourceTree = "<group>"; };
+		D404DFEC304E56980011F5A3 /* HealthSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthSettingsView.swift; sourceTree = "<group>"; };
+		D404DFEE304E56A30011F5A3 /* RemindersSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersSettingsView.swift; sourceTree = "<group>"; };
+		D404DFF0304E56AE0011F5A3 /* DataSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSettingsView.swift; sourceTree = "<group>"; };
+		D404DFF2304E56B90011F5A3 /* AboutSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettingsView.swift; sourceTree = "<group>"; };
 		D4DB75F3303F1AD90050C594 /* ManualBarcodeEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualBarcodeEntryView.swift; sourceTree = "<group>"; };
 		D4DB75F5303F615F0050C594 /* ReminderScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderScheduler.swift; sourceTree = "<group>"; };
 		D4DB75FB303FB6430050C594 /* DietBuddyWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DietBuddyWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -365,6 +375,11 @@
 			children = (
 				D403F057303E94D900140095 /* SettingsView.swift */,
 				D4DB76253040CF140050C594 /* ProfileEditorView.swift */,
+				D404DFEA304E56880011F5A3 /* AppearanceSettingsView.swift */,
+				D404DFEC304E56980011F5A3 /* HealthSettingsView.swift */,
+				D404DFEE304E56A30011F5A3 /* RemindersSettingsView.swift */,
+				D404DFF0304E56AE0011F5A3 /* DataSettingsView.swift */,
+				D404DFF2304E56B90011F5A3 /* AboutSettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -550,6 +565,7 @@
 				D403F03E303E945200140095 /* WeightChartView.swift in Sources */,
 				D403F040303E945500140095 /* WeightChangeSummaryView.swift in Sources */,
 				D4DB76223040CE6F0050C594 /* BMICalculator.swift in Sources */,
+				D404DFEF304E56A30011F5A3 /* RemindersSettingsView.swift in Sources */,
 				D4DB761E3040CE680050C594 /* Gender.swift in Sources */,
 				D403F048303E948200140095 /* GoalListView.swift in Sources */,
 				D403F04C303E949D00140095 /* SavedMealsPickerView.swift in Sources */,
@@ -566,6 +582,7 @@
 				D403F036303E93F000140095 /* MealBundleDetailView.swift in Sources */,
 				D4DB76F13042151D0050C594 /* BMIInfoView.swift in Sources */,
 				D4DB770630422EEA0050C594 /* LabeledDecimalField.swift in Sources */,
+				D404DFF3304E56B90011F5A3 /* AboutSettingsView.swift in Sources */,
 				D403F00C303CD44F00140095 /* AddMealView.swift in Sources */,
 				D403F028303E934100140095 /* FoodEntryForm.swift in Sources */,
 				D403F03C303E944E00140095 /* WeightView.swift in Sources */,
@@ -579,7 +596,9 @@
 				D403F034303E93E700140095 /* MealItemDetailView.swift in Sources */,
 				D403F05C303E94EF00140095 /* Theme.swift in Sources */,
 				D4DB7776304354960050C594 /* MacroSplit.swift in Sources */,
+				D404DFEB304E56880011F5A3 /* AppearanceSettingsView.swift in Sources */,
 				D403F046303E946700140095 /* WeightEntryEditor.swift in Sources */,
+				D404DFF1304E56AE0011F5A3 /* DataSettingsView.swift in Sources */,
 				D403F068303E95D700140095 /* RootTabView.swift in Sources */,
 				D403F004303C8C6900140095 /* BarcodeScannerView.swift in Sources */,
 				D403F054303E94B400140095 /* SavedMealEditorView.swift in Sources */,
@@ -591,6 +610,7 @@
 				D4DB76263040CF140050C594 /* ProfileEditorView.swift in Sources */,
 				D403F066303E95D100140095 /* DietBuddyApp.swift in Sources */,
 				D403F032303E93D600140095 /* MealItemRow.swift in Sources */,
+				D404DFED304E56980011F5A3 /* HealthSettingsView.swift in Sources */,
 				D403F026303E932300140095 /* ScanFoodView.swift in Sources */,
 				D403EFF2303C877F00140095 /* Goal.swift in Sources */,
 				D403EFEE303C877A00140095 /* MealItem.swift in Sources */,
