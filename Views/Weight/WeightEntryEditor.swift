@@ -9,6 +9,8 @@ struct WeightEntryEditor: View {
     let entry: WeightEntry?
     let unit: String
 
+    @AppStorage("healthSyncEnabled") private var healthSyncEnabled = false
+
     @State private var weightText: String
     @State private var date: Date
 
@@ -58,6 +60,9 @@ struct WeightEntryEditor: View {
             entry.date = date
         } else {
             context.insert(WeightEntry(date: date, weight: weight))
+            if healthSyncEnabled {
+                Task { await HealthKitService.shared.saveWeight(weight, weightUnit: unit, date: date) }
+            }
         }
         dismiss()
     }

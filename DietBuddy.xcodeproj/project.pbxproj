@@ -52,6 +52,7 @@
 		D403F060303E94F800140095 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F05F303E94F800140095 /* EmptyStateView.swift */; };
 		D403F066303E95D100140095 /* DietBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F065303E95D100140095 /* DietBuddyApp.swift */; };
 		D403F068303E95D700140095 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403F067303E95D700140095 /* RootTabView.swift */; };
+		D404DFCB304E51700011F5A3 /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D404DFCA304E51700011F5A3 /* HealthKitService.swift */; };
 		D4DB75F4303F1AD90050C594 /* ManualBarcodeEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB75F3303F1AD90050C594 /* ManualBarcodeEntryView.swift */; };
 		D4DB75F6303F615F0050C594 /* ReminderScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB75F5303F615F0050C594 /* ReminderScheduler.swift */; };
 		D4DB75FE303FB6430050C594 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DB75FD303FB6430050C594 /* WidgetKit.framework */; };
@@ -148,6 +149,7 @@
 		D403F05F303E94F800140095 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		D403F065303E95D100140095 /* DietBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietBuddyApp.swift; sourceTree = "<group>"; };
 		D403F067303E95D700140095 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
+		D404DFCA304E51700011F5A3 /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
 		D4DB75F3303F1AD90050C594 /* ManualBarcodeEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualBarcodeEntryView.swift; sourceTree = "<group>"; };
 		D4DB75F5303F615F0050C594 /* ReminderScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderScheduler.swift; sourceTree = "<group>"; };
 		D4DB75FB303FB6430050C594 /* DietBuddyWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DietBuddyWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,6 +290,7 @@
 			children = (
 				D403F001303C8C5E00140095 /* FoodLookupService.swift */,
 				D4DB75F5303F615F0050C594 /* ReminderScheduler.swift */,
+				D404DFCA304E51700011F5A3 /* HealthKitService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				D4DB777830439AFE0050C594 /* GoalDetailView.swift in Sources */,
 				D403F00A303CD44300140095 /* Meal.swift in Sources */,
 				D403F01E303E92F200140095 /* SavedMeal.swift in Sources */,
+				D404DFCB304E51700011F5A3 /* HealthKitService.swift in Sources */,
 				D403F034303E93E700140095 /* MealItemDetailView.swift in Sources */,
 				D403F05C303E94EF00140095 /* Theme.swift in Sources */,
 				D4DB7776304354960050C594 /* MacroSplit.swift in Sources */,
@@ -765,6 +769,9 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "DietBuddy uses the camera to scan food barcodes";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "DietBuddy reads your height, age, sex, and weight to personalize your profile and import weigh‑ins.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "DietBuddy reads your height, age, sex, and weight to personalize your profile and import weigh‑ins.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "DietBuddy saves your weigh‑ins and logged nutrition to Apple Health.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -812,6 +819,9 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "DietBuddy uses the camera to scan food barcodes";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "DietBuddy reads your height, age, sex, and weight to personalize your profile and import weigh‑ins.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "DietBuddy reads your height, age, sex, and weight to personalize your profile and import weigh‑ins.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "DietBuddy saves your weigh‑ins and logged nutrition to Apple Health.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

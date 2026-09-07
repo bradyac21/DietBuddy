@@ -31,12 +31,14 @@ struct WeightView: View {
     @Query private var meals: [Meal]
     @AppStorage("weightUnit") private var weightUnit: String = "lb"
     @AppStorage("showBMI") private var showBMI = true
+    @AppStorage("healthSyncEnabled") private var healthSyncEnabled = false
 
     @State private var period: WeightPeriod = .threeMonths
     @State private var editingEntry: WeightEntry?
     @State private var isLogging = false
     @State private var showCalories = false
     @State private var showingBMIInfo = false
+    @State private var stepsToday: Int?
 
     /// Newest-first, limited to the chart window.
     private var filteredEntries: [WeightEntry] {
@@ -118,6 +120,15 @@ struct WeightView: View {
                     }
                     .font(.subheadline)
                 }
+
+                if let stepsToday {
+                    HStack {
+                        Label("Steps Today", systemImage: "figure.walk")
+                        Spacer()
+                        Text("\(stepsToday, format: .number)").foregroundStyle(.secondary)
+                    }
+                    .font(.subheadline)
+                }
             }
 
             Section("Recent") {
@@ -145,6 +156,14 @@ struct WeightView: View {
             }
         }
         .navigationTitle("Weight")
+        .task(id: healthSyncEnabled) {
+            #if DEBUG
+            // Load in DEBUG regardless of the toggle so steps show on the simulator.
+            stepsToday = await HealthKitService.shared.todaySteps()
+            #else
+            stepsToday = healthSyncEnabled ? await HealthKitService.shared.todaySteps() : nil
+            #endif
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Menu {
