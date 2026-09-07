@@ -13,6 +13,7 @@ struct DataSettingsView: View {
     @Query private var goals: [Goal]
 
     @State private var showingResetAlert = false
+    @State private var storageText = "—"
 
     var body: some View {
         List {
@@ -22,6 +23,7 @@ struct DataSettingsView: View {
                 LabeledContent("Foods", value: "\(foods.count)")
                 LabeledContent("Saved Meals", value: "\(savedMeals.count)")
                 LabeledContent("Goals", value: "\(goals.count)")
+                LabeledContent("Storage Used", value: storageText)
             } header: {
                 Text("Stored Data")
             } footer: {
@@ -36,12 +38,33 @@ struct DataSettingsView: View {
         }
         .navigationTitle("Data")
         .navigationBarTitleDisplayMode(.inline)
+        .task { storageText = Self.storageUsed() }
         .alert("Reset All Data?", isPresented: $showingResetAlert) {
             Button("Delete Everything", role: .destructive) { resetAllData() }
             Button("Cancel", role: .cancel) { }
         } message: {
             Text("This permanently deletes all logged foods, meals, weigh-ins, saved meals, goals, and your profile. This can't be undone.")
         }
+    }
+
+    /// Total size of the SwiftData store files (default.store + its -wal/-shm sidecars).
+    private static func storageUsed() -> String {
+        let fileManager = FileManager.default
+        guard let directory = try? fileManager.url(for: .applicationSupportDirectory,
+                                                    in: .userDomainMask,
+                                                    appropriateFor: nil,
+                                                    create: false),
+              let contents = try? fileManager.contentsOfDirectory(at: directory,
+                                                                   includingPropertiesForKeys: [.fileSizeKey]) else {
+            return "—"
+        }
+        let bytes = contents
+            .filter { $0.lastPathComponent.hasPrefix("default.store") }
+            .reduce(Int64(0)) { total, url in
+                let size = (try? url.resourceValues(forKeys: [.fileSizeKey]).fileSize) ?? 0
+                return total + Int64(size)
+            }
+        return bytes.formatted(.byteCount(style: .file))
     }
 
     /// Permanently deletes every stored record. Preferences (theme, units, etc.) are kept.
@@ -56,5 +79,6 @@ struct DataSettingsView: View {
         try? context.delete(model: UserProfile.self)
         try? context.save()
         displayName = ""
+        storageText = Self.storageUsed()
     }
 }
