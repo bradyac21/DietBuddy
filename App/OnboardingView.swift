@@ -42,8 +42,9 @@ struct OnboardingView: View {
                             .navigationTitle("About You")
                             .navigationBarTitleDisplayMode(.inline)
                     case .features:
-                        FeaturesPhase(onFinish: { hasCompletedOnboarding = true })
-                            .navigationTitle("What You Can Do")
+                        FeaturesPhase(accentColorName: $accentColorName,
+                                      onFinish: { hasCompletedOnboarding = true })
+                            .navigationTitle("Let's Get Started!")
                             .navigationBarTitleDisplayMode(.inline)
                     }
                 }
@@ -142,15 +143,6 @@ private struct AboutYouPhase: View {
                         Text("Turns on syncing and fills your birthday, sex, and height from Apple Health.")
                     }
                 }
-
-                Section {
-                    AccentColorPicker(selection: $accentColorName)
-                        .padding(.vertical, 8)
-                } header: {
-                    Text("App Accent Color")
-                } footer: {
-                    Text("Sets the color used to tint buttons and highlights throughout the app.")
-                }
             }
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
@@ -186,6 +178,7 @@ private struct AboutYouPhase: View {
 }
 
 private struct FeaturesPhase: View {
+    @Binding var accentColorName: String
     let onFinish: () -> Void
 
     var body: some View {
@@ -200,6 +193,15 @@ private struct FeaturesPhase: View {
                                subtitle: "Calorie and macro rings for every day.")
                     FeatureRow(icon: "square.grid.2x2", title: "Home-screen widget",
                                subtitle: "Your daily macros at a glance.")
+                }
+
+                Section {
+                    AccentColorPicker(selection: $accentColorName)
+                        .padding(.vertical, 8)
+                } header: {
+                    Text("App Accent Color")
+                } footer: {
+                    Text("Sets the color used to tint buttons and highlights throughout the app.")
                 }
             }
 

@@ -104,6 +104,17 @@ final class HealthKitService {
         if let type = quantity(.height), let sample = await mostRecentSample(of: type) {
             result.heightCM = sample.quantity.doubleValue(for: .meterUnit(with: .centi))
         }
+
+        #if DEBUG
+        // Simulators have no Health profile data; fall back to sample values so importing
+        // demonstrably populates fields.
+        if result.birthday == nil {
+            result.birthday = Calendar.current.date(from: DateComponents(year: 1995, month: 6, day: 15))
+        }
+        if result.gender == nil { result.gender = .male }
+        if (result.heightCM ?? 0) == 0 { result.heightCM = 178 }
+        #endif
+
         return result
     }
 
