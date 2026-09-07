@@ -10,6 +10,7 @@ struct MealMainView: View {
                   SortDescriptor(\Meal.sortIndex)]) private var allMeals: [Meal]
     @Query private var goals: [Goal]
     @Query private var savedMeals: [SavedMeal]
+    @AppStorage("healthSyncEnabled") private var healthSyncEnabled = false
 
     @State private var isAddingMeal = false
     @State private var addItemTarget: Meal?
@@ -147,12 +148,14 @@ struct MealMainView: View {
                     item.bundleName = saved.name
                     context.insert(item)
                     meal.items.append(item)
+                    writeNutritionToHealth(item, isBeverage: false)
                 }
             }) { food, grams in
                 let item = MealItem(food: food, grams: grams)
                 context.insert(item)
                 meal.items.append(item)
                 food.recordLogged()
+                writeNutritionToHealth(item, isBeverage: food.isBeverage)
             }
         }
         .sheet(item: $savingMeal) { meal in
@@ -202,6 +205,19 @@ struct MealMainView: View {
             saved.items.append(savedItem)
         }
         meal.savedMeal = saved
+    }
+
+    /// Writes a logged item's nutrition to Apple Health when syncing is on.
+    private func writeNutritionToHealth(_ item: MealItem, isBeverage: Bool) {
+        guard healthSyncEnabled else { return }
+        Task {
+            await HealthKitService.shared.saveNutrition(calories: item.calories,
+                                                        protein: item.protein,
+                                                        carbs: item.carbs,
+                                                        fat: item.fat,
+                                                        waterMilliliters: isBeverage ? item.grams : nil,
+                                                        date: item.loggedAt)
+        }
     }
 
     private func unsaveMeal(_ meal: Meal) {
