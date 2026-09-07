@@ -71,6 +71,25 @@ private struct ProfileForm: View {
             } footer: {
                 Text("Optional. Your height is used to show your BMI on the Weight tab.")
             }
+
+            if HealthKitService.shared.isAvailable {
+                Section {
+                    Button("Import from Apple Health") { importFromHealth() }
+                } footer: {
+                    Text("Fills your birthday, sex, and height from Apple Health.")
+                }
+            }
+        }
+    }
+
+    /// Reads birthday, biological sex, and height from Apple Health into the profile.
+    private func importFromHealth() {
+        Task {
+            await HealthKitService.shared.requestAuthorization()
+            let data = await HealthKitService.shared.readProfile()
+            if let birthday = data.birthday { profile.birthday = birthday }
+            if let gender = data.gender { profile.gender = gender }
+            if let heightCM = data.heightCM, heightCM > 0 { profile.heightCM = heightCM }
         }
     }
 }
